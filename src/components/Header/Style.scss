@@ -1,0 +1,35 @@
+@import '/src/assets/styles/mixins';
+
+.header {
+    padding: 25px 0 10px;
+    &-inner {
+        display: flex;
+        align-items: center;
+        &-left {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+        &-right {
+            //
+        }
+    }
+    &-logo {
+        display: block;
+        height: 40px;
+        width: 40px;
+        @include media-breakpoint-up(md) {
+            height: 50px;
+            width: 50px;
+        }
+    }
+    &-separator {
+        height: 30px;
+        width: 2px;
+        background-color: $theme-light-muted;
+        margin: 0 15px;
+    }
+    &-slogan {
+        color: $theme-light-muted;
+    }
+}

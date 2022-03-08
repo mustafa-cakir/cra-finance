@@ -1,0 +1,212 @@
+/**
+	Custom UI-Kit
+ */
+
+@import './mixins';
+
+.container {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@each $breakpoint, $container-max-width in $container-max-widths {
+    @include media-breakpoint-up($breakpoint) {
+        .container {
+            $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+            max-width: $container-max-width;
+        }
+    }
+}
+
+.ui {
+    &-placeholder {
+        padding: 5px 10px;
+        align-items: center;
+        background-color: rgba($theme-light-muted, 0.2);
+        border: 2px dashed $theme-light-muted;
+        color: $theme-light-muted;
+        display: flex;
+        flex: 0 0 100%;
+        font-weight: 900;
+        justify-content: center;
+        max-width: 100%;
+	    transition: border-color .2s linear, color .2s linear, background-color .2s linear;
+	    .theme-dark & {
+		    background-color: rgba($theme-dark-muted, 0.2);
+		    border-color: $theme-dark-muted;
+		    color: $theme-dark-muted
+	    }
+    }
+    &-text {
+        &-muted {
+            .theme-dark & {
+                color: $theme-dark-muted;
+            }
+            color: $theme-light-muted;
+        }
+    }
+    &-link {
+        border-bottom: 1px solid transparent;
+        color: $color-blue;
+        transition: border-bottom-color 0.2s linear;
+        &:hover,
+        &.active {
+            border-bottom-color: $color-blue;
+        }
+
+        //&.is-red {
+        //    color: $color-red;
+        //    &:hover {
+        //        border-bottom-color: $color-red;
+        //    }
+        //}
+    }
+
+    //&-input {
+    //    border: 1px solid $theme-light-muted;
+    //    border-radius: 5px;
+    //    outline: none;
+    //    padding: 10px 15px;
+    //    transition: box-shadow 0.2s linear, border-color 0.2s linear;
+    //    width: 100%;
+    //    &-label {
+    //        display: block;
+    //        margin-bottom: 10px;
+    //    }
+    //    &-wrapper {
+    //        position: relative;
+    //        .icons {
+    //            font-size: 16px;
+    //            left: 0;
+    //            line-height: 42px;
+    //            position: absolute;
+    //            text-align: center;
+    //            top: 0;
+    //            width: 42px;
+    //            z-index: 1;
+    //            & + .ui-input {
+    //                padding-left: 42px;
+    //            }
+    //        }
+    //    }
+    //    &:focus {
+    //        border-color: $color-blue;
+    //        box-shadow: 0 0 0 2px rgba($color-blue-focus, 1);
+    //    }
+    //}
+    &-box {
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: $theme-dark-body;
+        transition: background-color 0.2s linear, color 0.2s linear;
+        .theme-dark & {
+            background-color: $theme-dark-muted-dark;
+            color: $theme-dark-muted;
+        }
+    }
+    /* media break point varianted UI rules */
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        @include media-breakpoint-up($breakpoint) {
+            $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+            &-text#{$infix} {
+                &-size {
+                    &-8 {
+                        font-size: 8px;
+                    }
+                    &-10 {
+                        font-size: 10px;
+                    }
+                    &-11 {
+                        font-size: 11px;
+                    }
+                    &-12 {
+                        font-size: 12px;
+                    }
+                    &-14 {
+                        font-size: 14px;
+                    }
+                    &-16 {
+                        font-size: 16px;
+                    }
+                    &-18 {
+                        font-size: 18px;
+                    }
+                    &-20 {
+                        font-size: 20px;
+                    }
+                    &-24 {
+                        font-size: 24px;
+                    }
+                    &-32 {
+                        font-size: 32px;
+                    }
+                    &-36 {
+                        font-size: 36px;
+                    }
+                    &-40 {
+                        font-size: 40px;
+                        line-height: 1;
+                    }
+                    &-50 {
+                        font-size: 50px;
+                        line-height: 1;
+                    }
+                }
+                // text-align
+                &-left {
+                    text-align: left;
+                }
+                &-right {
+                    text-align: right;
+                }
+                &-center {
+                    text-align: center;
+                }
+                // font weight
+                &-weight-bold {
+                    font-weight: 900;
+                }
+                &-weight-normal {
+                    font-weight: 400;
+                }
+            }
+
+            @for $i from 1 through 800 {
+                @if $i % 5 == 0 {
+                    // width, min-width, max-width
+                    &#{$infix}-flex-#{$i} {
+                        flex: 0 0 #{$i}px;
+                        max-width: #{$i}px;
+                    }
+
+                    &#{$infix}-w-#{$i} {
+                        width: #{$i}px;
+                    }
+
+                    &#{$infix}-min-w-#{$i} {
+                        min-width: #{$i}px;
+                    }
+                    &#{$infix}-max-w-#{$i} {
+                        max-width: #{$i}px;
+                    }
+                    // height, min-height, max-height
+                    &#{$infix}-h-#{$i} {
+                        height: #{$i}px;
+                    }
+                    &#{$infix}-max-h-#{$i} {
+                        max-height: #{$i}px;
+                    }
+                    &#{$infix}-min-h-#{$i} {
+                        min-height: #{$i}px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+@import '../../../assets/styles/mixins';
+
+.alert {
+    align-items: center;
+    animation: fadeIn 0.3s linear forwards;
+    animation-delay: 0.3s;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-flex;
+    margin-bottom: 15px;
+    opacity: 0;
+    padding: 15px;
+    text-align: left;
+    .icons {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    &.type {
+        &-info {
+            background-color: rgba($color-blue, 0.5);
+            box-shadow: 0 0 10px 0 rgba($color-blue, 0.1);
+            color: $color-blue;
+        }
+
+        &-success {
+            background-color: rgba($color-green, 0.5);
+            box-shadow: 0 0 10px 0 rgba($color-green, 0.1);
+            color: $color-green;
+        }
+
+        &-error {
+            animation: shake 1s linear forwards;
+            background-color: rgba($color-red, 0.5);
+            box-shadow: 0 0 10px 0 rgba($color-red, 0.1);
+            color: $color-red;
+            opacity: 1;
+        }
+
+        &-warning {
+            background-color: rgba($color-yellow, 0.5);
+            box-shadow: 0 0 10px 0 rgba($color-yellow, 0.1);
+            color: $color-yellow;
+        }
+    }
+}
