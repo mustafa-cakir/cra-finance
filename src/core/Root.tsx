@@ -8,7 +8,7 @@ import ErrorBoundary from '../components/common/ErrorBoundary';
 import { useAppSelector } from './hooks';
 
 const Root = () => {
-    const { theme } = useAppSelector(redux => redux.global);
+    const { theme } = useAppSelector(redux => redux.user);
     return (
         <div className={`app theme-${theme}`}>
             <BrowserRouter>

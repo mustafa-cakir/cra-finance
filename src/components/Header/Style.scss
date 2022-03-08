@@ -26,10 +26,17 @@
     &-separator {
         height: 30px;
         width: 2px;
-        background-color: $theme-light-muted;
+        background-color: rgba($color-dark, 0.15);
         margin: 0 15px;
+        transition: background-color 0.2s linear;
+        .theme-dark & {
+            background-color: rgba($color-light, 0.15);
+        }
     }
     &-slogan {
-        color: $theme-light-muted;
+        color: rgba($color-dark, 0.5);
+        .theme-dark & {
+            color: rgba($color-light, 0.5);
+        }
     }
 }

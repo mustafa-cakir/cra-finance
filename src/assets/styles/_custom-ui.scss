@@ -25,36 +25,44 @@
     &-placeholder {
         padding: 5px 10px;
         align-items: center;
-        background-color: rgba($theme-light-muted, 0.2);
-        border: 2px dashed $theme-light-muted;
-        color: $theme-light-muted;
+        background-color: rgba($color-dark, 0.1);
+        border: 2px dashed rgba($color-dark, 0.2);
+        color: rgba($color-dark, 0.5);
         display: flex;
         flex: 0 0 100%;
         font-weight: 900;
         justify-content: center;
         max-width: 100%;
-	    transition: border-color .2s linear, color .2s linear, background-color .2s linear;
-	    .theme-dark & {
-		    background-color: rgba($theme-dark-muted, 0.2);
-		    border-color: $theme-dark-muted;
-		    color: $theme-dark-muted
-	    }
+        transition: border-color 0.2s linear, color 0.2s linear, background-color 0.2s linear;
+        .theme-dark & {
+            background-color: rgba($color-light, 0.1);
+            border-color: rgba($color-light, 0.2);
+            color: rgba($color-light, 0.5);
+        }
     }
     &-text {
         &-muted {
+            color: rgba($color-dark, 0.5);
+            transition: color 0.2s linear;
             .theme-dark & {
-                color: $theme-dark-muted;
+                color: rgba($color-light, 0.5);
             }
-            color: $theme-light-muted;
         }
     }
     &-link {
         border-bottom: 1px solid transparent;
         color: $color-blue;
-        transition: border-bottom-color 0.2s linear;
+        transition: border-bottom-color 0.2s linear, color 0.2s linear;
         &:hover,
         &.active {
             border-bottom-color: $color-blue;
+        }
+        .theme-dark & {
+            color: $color-light;
+            &:hover,
+            &.active {
+                border-bottom-color: $color-light;
+            }
         }
 
         //&.is-red {
@@ -65,54 +73,113 @@
         //}
     }
 
-    //&-input {
-    //    border: 1px solid $theme-light-muted;
-    //    border-radius: 5px;
-    //    outline: none;
-    //    padding: 10px 15px;
-    //    transition: box-shadow 0.2s linear, border-color 0.2s linear;
-    //    width: 100%;
-    //    &-label {
-    //        display: block;
-    //        margin-bottom: 10px;
-    //    }
-    //    &-wrapper {
-    //        position: relative;
-    //        .icons {
-    //            font-size: 16px;
-    //            left: 0;
-    //            line-height: 42px;
-    //            position: absolute;
-    //            text-align: center;
-    //            top: 0;
-    //            width: 42px;
-    //            z-index: 1;
-    //            & + .ui-input {
-    //                padding-left: 42px;
-    //            }
-    //        }
-    //    }
-    //    &:focus {
-    //        border-color: $color-blue;
-    //        box-shadow: 0 0 0 2px rgba($color-blue-focus, 1);
-    //    }
-    //}
+    &-input {
+        border: 1px solid rgba($color-purple, 0.1);
+        border-radius: 5px;
+        outline: none;
+        padding: 10px 15px;
+        transition: box-shadow 0.2s linear, border-color 0.2s linear, color 0.2s linear, background-color 0.2s linear;
+        width: 100%;
+        color: $color-dark;
+        background-color: rgba($color-dark, 0.05);
+        &:hover {
+            border-color: rgba($color-purple, 0.3);
+        }
+        &:focus {
+            border-color: $color-purple;
+            box-shadow: 0 0 0 2px rgba($color-purple, 0.1);
+        }
+        &::placeholder {
+            color: rgba($color-dark, 0.3);
+        }
+        .theme-dark & {
+            background-color: rgba($color-light, 0.05);
+            color: $color-light;
+            border-color: rgba($color-light, 0.1);
+            &:hover {
+                border-color: rgba($color-light, 0.3);
+            }
+            &:focus {
+                border-color: rgba($color-light, 0.4);
+                box-shadow: 0 0 0 2px rgba($color-light, 0.1);
+            }
+            &::placeholder {
+                color: rgba($color-light, 0.3);
+            }
+        }
+        &-label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        &-wrapper {
+            position: relative;
+            .icons {
+                font-size: 16px;
+                left: 0;
+                line-height: 42px;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                width: 42px;
+                z-index: 1;
+                & + .ui-input {
+                    padding-left: 42px;
+                }
+            }
+        }
+    }
     &-box {
         padding: 15px;
         background-color: #fff;
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        color: $theme-dark-body;
-        transition: background-color 0.2s linear, color 0.2s linear;
+        box-shadow: 0 0 10px rgba($color-dark, 0.1);
+        color: $color-dark;
+        transition: background-color 0.2s linear, color 0.2s linear, box-shadow 0.2s linear;
         .theme-dark & {
-            background-color: $theme-dark-muted-dark;
-            color: $theme-dark-muted;
+            box-shadow: none;
+            background-color: rgba($color-light, 0.05);
+            color: $color-light;
         }
     }
     /* media break point varianted UI rules */
     @each $breakpoint in map-keys($grid-breakpoints) {
         @include media-breakpoint-up($breakpoint) {
             $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+            @for $i from 0 through 30 {
+                @if $i % 5 == 0 {
+                    // padding: bottom/top/left/right 5px, 10px, 15px, 20px, 25px, 30px
+                    // margin: bottom/top/left/right 5px, 10px, 15px, 20px, 25px, 30px
+                    // infix support:
+                    // ui-mb-5 => {all} screens will have margin-bottom: 5px;
+                    // ui-mb-lg-5 => {lg} and up will have margin-bottom: 5px;
+
+                    &-mb#{$infix}-#{$i} {
+                        margin-bottom: #{$i}px;
+                    }
+                    &-mt#{$infix}-#{$i} {
+                        margin-top: #{$i}px;
+                    }
+                    &-ml#{$infix}-#{$i} {
+                        margin-left: #{$i}px;
+                    }
+                    &-mr#{$infix}-#{$i} {
+                        margin-right: #{$i}px;
+                    }
+                    &-pb#{$infix}-#{$i} {
+                        padding-bottom: #{$i}px;
+                    }
+                    &-pt#{$infix}-#{$i} {
+                        padding-top: #{$i}px;
+                    }
+                    &-pl#{$infix}-#{$i} {
+                        padding-left: #{$i}px;
+                    }
+                    &-pr#{$infix}-#{$i} {
+                        padding-right: #{$i}px;
+                    }
+                }
+            }
 
             &-text#{$infix} {
                 &-size {
@@ -177,9 +244,15 @@
                 }
             }
 
-            @for $i from 1 through 800 {
+            @for $i from 1 through 500 {
                 @if $i % 5 == 0 {
-                    // width, min-width, max-width
+                    // width, min-width, max-width for 5px, 10px....495px, 500px
+                    // height, min-height, max-height for 5px, 10px....495px, 500px
+                    // flex for 5px, 10px....495px, 500px
+                    // Supports breakpoint infix
+                    // ui-w-50 => {all} screens will have width: 50px;
+                    // ui-lg-w-50 => {lg} and up will have width: 50px;
+
                     &#{$infix}-flex-#{$i} {
                         flex: 0 0 #{$i}px;
                         max-width: #{$i}px;

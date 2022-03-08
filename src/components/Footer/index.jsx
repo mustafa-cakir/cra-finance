@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { URL_HOMEPAGE } from '../../core/constants';
+import { URL_HOMEPAGE, URL_UIKIT } from '../../core/constants';
 import './Style.scss';
 
 const Footer = () => {
@@ -15,23 +15,13 @@ const Footer = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/some-not-exist-url" className="ui-link">
+                        <NavLink to={URL_UIKIT} className="ui-link">
+                            UI-Kit Page
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/some-not-exist-link" className="ui-link">
                             404 Page
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/some-link-1" className="ui-link">
-                            Some Sample Link #1
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/some-link-2" className="ui-link">
-                            Some More Link #2
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/some-link-3" className="ui-link">
-                            Some Even More Link #3
                         </NavLink>
                     </li>
                 </ul>

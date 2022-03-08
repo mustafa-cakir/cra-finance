@@ -42,12 +42,12 @@ body {
 }
 
 .app {
-    background-color: $theme-light-bg;
-    color: $theme-light-body;
+    background-color: $color-light;
+    color: $color-dark;
     transition: background-color 0.2s linear, color 0.2s linear;
     &.theme-dark {
-        background-color: $theme-dark-bg;
-        color: $theme-dark-body;
+        background-color: $color-dark;
+        color: $color-light;
     }
 }
 
@@ -74,12 +74,17 @@ button,
 textarea,
 select {
     -webkit-appearance: none;
-    color: $theme-light-body;
+    color: $color-dark;
     font-family: $font-family;
     font-size: 14px;
     font-weight: normal;
     line-height: 1.42857143;
     margin: 0;
+    border: none;
+    transition: background-color 0.2s linear, color 0.2s linear;
+    .theme-dark & {
+        color: $color-light;
+    }
 }
 
 textarea {
@@ -104,7 +109,7 @@ button {
 }
 
 a {
-    color: $color-blue;
+    color: $color-purple;
     text-decoration: none;
 
     &:hover {
@@ -130,11 +135,11 @@ img {
 
 hr {
     border: 0;
-    border-bottom: 1px solid $theme-light-gray;
+    border-bottom: 1px solid rgba($color-dark, 0.1);
     margin: 15px 0;
     transition: border-bottom-color 0.2s linear;
     .theme-dark & {
-        border-bottom-color: $theme-dark-gray;
+        border-bottom-color: rgba($color-light, 0.1);
     }
 }
 

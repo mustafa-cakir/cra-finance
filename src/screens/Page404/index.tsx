@@ -10,9 +10,9 @@ const Page404 = () => {
         <div className="page-404">
             <div className="container">
                 <div className="page-404-inner">
-                    <div className="ui-box">
+                    <div>
                         <code className="ui-placeholder image">Not Found Image</code>
-                        <div>Page not found.</div>
+                        <div>404 - Page not found.</div>
                         <div className="ui-text-muted">That's all we know</div>
                     </div>
                 </div>
