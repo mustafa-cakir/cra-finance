@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../core/hooks';
-import { getStockCompany } from '../../FavoriteStocksSlice';
 import Alert from '../../../common/Alert';
 import { addItemToFavStocks } from '../../../../core/reducers/userReducer';
 import Icons from '../../../common/Icons';
 import ShimmerLoading from './ShimmerLoading';
+import { fetchStockCompany, fetchStockQuote } from '../../FavoriteStocksAPI';
 import './Style.scss';
 
 type Props = {
@@ -20,18 +20,16 @@ const FavoriteStocksSearchDropdown = ({ keyword, addStockToFavCallback }: Props)
 
     useEffect(() => {
         if (keyword) {
-            dispatch(getStockCompany(keyword))
-                .then(() => {
-                    // do nothing;
-                })
-                .catch(() => {
-                    // do nothing.
-                });
+            void dispatch(fetchStockCompany(keyword));
         }
     }, [dispatch, keyword]);
 
     const addStockToFavHandler = (symbol: string) => {
-        dispatch(addItemToFavStocks(symbol));
+        if (favStocks.indexOf(symbol) < 0) {
+            // Check if stock is already in the favStocks
+            void dispatch(fetchStockQuote(symbol));
+            dispatch(addItemToFavStocks(symbol));
+        }
         addStockToFavCallback();
     };
 

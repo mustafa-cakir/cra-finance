@@ -5,6 +5,9 @@ import * as serviceWorker from './serviceWorker';
 import './assets/styles/global.scss';
 import { store } from './core/store';
 import Root from './core/Root';
+import { fetchStockQuotesOnInit } from './components/FavoriteStocks/FavoriteStocksAPI';
+
+store.dispatch(fetchStockQuotesOnInit());
 
 ReactDOM.render(
     <React.StrictMode>

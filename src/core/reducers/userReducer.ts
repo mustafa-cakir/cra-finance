@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IFavStockItem, IListingType, ITheme, IUser } from '../types';
-import {
-    addStringValueIntoArrayIfNotExist,
-    getUserStateFromLocalStorage,
-    removeStringValueFromArrayIfExist,
-    setUserStateToLocalStorage,
-} from '../utils';
+import { getUserStateFromLocalStorage, setUserStateToLocalStorage } from '../utils';
 
 // Check if user data is stored in the localStorage
 const prevUserState = getUserStateFromLocalStorage();
@@ -40,12 +35,12 @@ const userSlice = createSlice({
             setUserStateToLocalStorage(state);
         },
         addItemToFavStocks: (state, action: PayloadAction<IFavStockItem>) => {
-            state.favStocks = addStringValueIntoArrayIfNotExist(state.favStocks, action.payload);
+            state.favStocks = [...state.favStocks, action.payload];
             // store the user state into localStorage for persistancy
             setUserStateToLocalStorage(state);
         },
         removeItemFromFavStocks: (state, action: PayloadAction<IFavStockItem>) => {
-            state.favStocks = removeStringValueFromArrayIfExist(state.favStocks, action.payload);
+            state.favStocks = state.favStocks.filter(x => x !== action.payload);
             // store the user state into localStorage for persistancy
             setUserStateToLocalStorage(state);
         },

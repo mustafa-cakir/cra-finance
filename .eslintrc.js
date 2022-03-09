@@ -34,6 +34,8 @@ module.exports = {
         },
     },
     rules: {
+        'import/no-cycle': 'off',
+        'no-void': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         'no-debugger': 'off',
         'react/jsx-no-useless-fragment': [2, { allowExpressions: true }],

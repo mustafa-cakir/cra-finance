@@ -18,16 +18,6 @@ export const setUserStateToLocalStorage = (user: IUser): void => {
     }
 };
 
-export const addStringValueIntoArrayIfNotExist = (arr: string[], val: string): string[] => {
-    if (!arr) return [];
-    return arr?.indexOf(val) === -1 ? [...arr, val] : arr;
-};
-
-export const removeStringValueFromArrayIfExist = (arr: string[], val: string): string[] => {
-    if (!arr) return [];
-    return arr?.filter(x => x !== val);
-};
-
 export const debounce = (callback: (...arg: any[]) => void, wait = 500) => {
     let timeout: NodeJS.Timeout;
     return (...args: unknown[]) => {
@@ -35,4 +25,18 @@ export const debounce = (callback: (...arg: any[]) => void, wait = 500) => {
         clearTimeout(timeout);
         timeout = setTimeout(next, wait);
     };
+};
+
+export const currenyFormatter = (price: number, currency = 'USD'): string => {
+    return price.toLocaleString('en-US', {
+        style: 'currency',
+        currency,
+    });
+};
+
+export const percentageFormatter = (percentage: number): string => {
+    return percentage.toLocaleString('en-US', {
+        style: 'percent',
+        minimumFractionDigits: 2,
+    });
 };
