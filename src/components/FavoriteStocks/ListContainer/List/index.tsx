@@ -17,10 +17,12 @@ const FavoriteStocksList = () => {
             {favStocks?.map((symbol: string) => {
                 return (
                     <div className="ui-box ui-mb-15" key={symbol}>
-                        <div className="symbol">{symbol}</div>
-                        <button type="button" onClick={() => removeStockHandler(symbol)}>
-                            {symbol} <Icons name="x" />
-                        </button>
+                        <div className="favorite-stocks-list-inner">
+                            <div className="symbol">{symbol}</div>
+                            <button type="button" className="ui-icon-button" onClick={() => removeStockHandler(symbol)}>
+                                <Icons name="x" />
+                            </button>
+                        </div>
                     </div>
                 );
             })}

@@ -1,3 +1,10 @@
 .favorite-stocks-list {
-    //
+    &-inner {
+        display: flex;
+        align-items: center;
+        .symbol {
+            font-size: 22px;
+            flex: 1;
+        }
+    }
 }

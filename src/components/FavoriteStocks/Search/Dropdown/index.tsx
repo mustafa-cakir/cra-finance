@@ -14,9 +14,9 @@ type Props = {
 
 const FavoriteStocksSearchDropdown = ({ keyword, addStockToFavCallback }: Props) => {
     const dispatch = useAppDispatch();
-    const { company } = useAppSelector(redux => redux.favoriteStocks);
+    const { search } = useAppSelector(redux => redux.favoriteStocks);
     const { favStocks } = useAppSelector(redux => redux.user);
-    const { data, isLoading, error } = company || {};
+    const { company, isLoading, error } = search || {};
 
     useEffect(() => {
         if (keyword) {
@@ -35,7 +35,7 @@ const FavoriteStocksSearchDropdown = ({ keyword, addStockToFavCallback }: Props)
         addStockToFavCallback();
     };
 
-    const { symbol, companyName } = data || {};
+    const { symbol, companyName } = company || {};
 
     if (error) {
         return (

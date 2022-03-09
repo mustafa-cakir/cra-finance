@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICompanyData, IFavoriteStocks } from '../../core/types';
+import { ICompany, IFavoriteStocks } from '../../core/types';
 import { GET_STOCK_COMPANY_BY_SYMBOL } from '../../core/constants/apis';
 import fetchIEX from './FavoriteStocksAPI';
 
@@ -23,13 +23,13 @@ export const getStockCompany = createAsyncThunk('stock/company', async (symbol: 
 });
 
 const initialState: IFavoriteStocks = {
-    company: {
-        data: null,
+    search: {
+        company: null,
         isLoading: false,
         error: null,
     },
-    quote: {
-        data: null,
+    list: {
+        quotes: [],
         isLoading: false,
         error: null,
     },
@@ -47,25 +47,17 @@ export const favoriteStocksSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(getStockCompany.pending, state => {
-                state.company = {
-                    data: null,
-                    isLoading: true,
-                    error: null,
-                };
+                state.search.company = null;
+                state.search.isLoading = true;
+                state.search.error = null;
             })
-            .addCase(getStockCompany.fulfilled, (state, action: PayloadAction<ICompanyData>) => {
-                state.company = {
-                    data: action.payload,
-                    isLoading: false,
-                    error: null,
-                };
+            .addCase(getStockCompany.fulfilled, (state, action: PayloadAction<ICompany>) => {
+                state.search.company = action.payload;
+                state.search.isLoading = false;
             })
             .addCase(getStockCompany.rejected, (state, action) => {
-                state.company = {
-                    data: null,
-                    isLoading: false,
-                    error: action.payload as string,
-                };
+                state.search.isLoading = false;
+                state.search.error = action.payload as string;
             });
     },
 });

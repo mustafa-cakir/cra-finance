@@ -19,14 +19,15 @@ const FavoriteStocksListHeader = () => {
                 <button
                     type="button"
                     onClick={() => changeListingType('list')}
-                    className={listingType === 'list' ? 'active' : ''}
+                    className={`ui-icon-button ${listingType === 'list' ? 'active' : ''}`}
                 >
                     <Icons name="list" />
                 </button>
+                <div className="separator" />
                 <button
                     type="button"
                     onClick={() => changeListingType('grid')}
-                    className={listingType === 'grid' ? 'active' : ''}
+                    className={`ui-icon-button ${listingType === 'grid' ? 'active' : ''}`}
                 >
                     <Icons name="grid" />
                 </button>

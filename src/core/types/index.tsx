@@ -21,7 +21,7 @@ export type IRoute = {
 
 export type IRoutes = IRoute[];
 
-export type ICompanyData = {
+export type ICompany = {
     symbol: string;
     companyName: null | string;
     exchange: null | string;
@@ -44,19 +44,27 @@ export type ICompanyData = {
     phone: null | string;
 };
 
-export type ICompany = {
-    data: null | ICompanyData;
+export type IQuote = {
+    symbol: string;
+    companyName: string;
+    changePercent: number;
+    latestPrice: number;
+    currency: string;
+};
+
+export type ISearch = {
+    company: null | ICompany;
     isLoading: boolean;
     error: null | string;
 };
 
-export type IQuote = {
-    data: unknown;
+export type IList = {
+    quotes: IQuote[];
     isLoading: boolean;
     error: null | string;
 };
 
 export type IFavoriteStocks = {
-    company: ICompany;
-    quote: IQuote;
+    search: ISearch;
+    list: IList;
 };

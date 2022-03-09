@@ -49,6 +49,41 @@
             }
         }
     }
+	&-icon-button {
+		align-items: center;
+		border-radius: 16px;
+		color: rgba($color-dark, 0.4);
+		display: inline-flex;
+		height: 36px;
+		justify-content: center;
+		transition: background-color 0.2s linear;
+		width: 36px;
+		.theme-dark & {
+			border-right-color: rgba($color-light, 0.4);
+			color: rgba($color-light, 0.4);
+		}
+		&:hover {
+			background-color: rgba($color-dark, 0.1);
+			.theme-dark & {
+				background-color: rgba($color-light, 0.1);
+			}
+		}
+		&:active {
+			background-color: rgba($color-dark, 0.2);
+			.theme-dark & {
+				background-color: rgba($color-light, 0.2);
+			}
+		}
+		&.active {
+			color: $color-dark;
+			.theme-dark & {
+				color: $color-light;
+			}
+		}
+		.icons {
+			font-size: 22px;
+		}
+	}
     &-link {
         border-bottom: 1px solid transparent;
         color: $color-blue;
