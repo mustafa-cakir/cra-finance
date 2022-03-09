@@ -30,8 +30,8 @@ const FavoriteStocksSearchDropdown = ({ keyword, addStockToFavCallback }: Props)
         }
     }, [dispatch, keyword]);
 
-    const addStockToFavHandler = (stock: string) => {
-        dispatch(addItemToFavStocks(stock));
+    const addStockToFavHandler = (symbol: string) => {
+        dispatch(addItemToFavStocks(symbol));
         addStockToFavCallback();
     };
 

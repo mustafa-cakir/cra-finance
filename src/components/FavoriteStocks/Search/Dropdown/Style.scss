@@ -10,8 +10,12 @@
     text-align: left;
     border-radius: 5px;
     padding: 10px 15px;
+
     &:hover {
         background-color: rgba($color-dark, 0.05);
+        .theme-dark & {
+            background-color: rgba($color-light, 0.05);
+        }
     }
     .symbol {
         font-size: 18px;

@@ -2,7 +2,10 @@ export type IFavStockItem = string;
 
 export type ITheme = 'dark' | 'light';
 
+export type IListingType = 'list' | 'grid';
+
 export type IUser = {
+    listingType: IListingType;
     theme: ITheme;
     favStocks: IFavStockItem[];
 };
@@ -19,7 +22,7 @@ export type IRoute = {
 export type IRoutes = IRoute[];
 
 export type ICompanyData = {
-    symbol: null | string;
+    symbol: string;
     companyName: null | string;
     exchange: null | string;
     industry: null | string;

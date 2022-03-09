@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IFavStockItem, ITheme, IUser } from '../types';
+import { IFavStockItem, IListingType, ITheme, IUser } from '../types';
 import {
     addStringValueIntoArrayIfNotExist,
     getUserStateFromLocalStorage,
@@ -13,6 +13,7 @@ const prevUserState = getUserStateFromLocalStorage();
 const initialState: IUser = {
     theme: 'light',
     favStocks: [],
+    listingType: 'list',
     // if prevUserState existed, merge it with the empty initialState. Merge instead of replace,
     // because some new props might be added to initialState in the future
     ...(prevUserState && prevUserState),
@@ -23,6 +24,11 @@ const userSlice = createSlice({
     initialState,
     // The `reducers` field lets us define reducers and generate associated actions
     reducers: {
+        setListingType: (state, action: PayloadAction<IListingType>) => {
+            state.listingType = action.payload;
+            // store the user state into localStorage for persistancy
+            setUserStateToLocalStorage(state);
+        },
         setTheme: (state, action: PayloadAction<ITheme>) => {
             state.theme = action.payload;
             // store the user state into localStorage for persistancy
@@ -48,6 +54,6 @@ const userSlice = createSlice({
 
 const { reducer: userReducer, actions } = userSlice;
 
-export const { setTheme, toggleTheme, addItemToFavStocks, removeItemFromFavStocks } = actions;
+export const { setTheme, toggleTheme, addItemToFavStocks, removeItemFromFavStocks, setListingType } = actions;
 
 export default userReducer;

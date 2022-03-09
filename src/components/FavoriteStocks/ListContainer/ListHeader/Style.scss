@@ -1,0 +1,40 @@
+@import 'src/assets/styles/mixins';
+
+.favorite-stocks-list-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    h3 {
+        flex: 1;
+        margin: 0;
+    }
+    .sort-icon {
+        button {
+            padding: 0 15px;
+            border-right: 1px solid rgba($color-dark, 0.4);
+            color: rgba($color-dark, 0.4);
+            .theme-dark & {
+                border-right-color: rgba($color-light, 0.4);
+                color: rgba($color-light, 0.4);
+            }
+            &:hover {
+                color: rgba($color-dark, 0.8);
+                .theme-dark & {
+                    color: rgba($color-light, 0.8);
+                }
+            }
+            &.active {
+                color: $color-dark;
+                .theme-dark & {
+                    color: $color-light;
+                }
+            }
+            .icons {
+                font-size: 22px;
+            }
+            &:last-of-type {
+                border: none;
+            }
+        }
+    }
+}

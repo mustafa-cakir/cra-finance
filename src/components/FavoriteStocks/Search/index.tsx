@@ -39,7 +39,7 @@ const FavoriteStocksSearch = () => {
                 <input
                     ref={elInput}
                     type="text"
-                    placeholder="Search stock symbol"
+                    placeholder="Search stock to add favorites"
                     className="ui-input"
                     onChange={debounce(onChangeHandler)}
                     onFocus={onFocusHandler}
