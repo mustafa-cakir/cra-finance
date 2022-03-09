@@ -8,6 +8,7 @@
         cursor: pointer;
         display: none;
         margin-left: 15px;
+        color: rgba($color-light, 0.8);
         @include media-breakpoint-up(md) {
             display: block;
         }

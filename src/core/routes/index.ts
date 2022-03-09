@@ -7,12 +7,10 @@ const routes: IRoutes = [
     {
         path: URL_HOMEPAGE,
         Component: Homepage,
-        // isAuth: false, /* in case we need login-restricted pages */
     },
     {
         path: URL_UIKIT,
         Component: UIKit,
-        // isAuth: false, /* in case we need login-restricted pages */
     },
 
     /**

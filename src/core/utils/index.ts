@@ -27,3 +27,12 @@ export const removeStringValueFromArrayIfExist = (arr: string[], val: string): s
     if (!arr) return [];
     return arr?.filter(x => x !== val);
 };
+
+export const debounce = (callback: (...arg: any[]) => void, wait = 500) => {
+    let timeout: NodeJS.Timeout;
+    return (...args: unknown[]) => {
+        const next = () => callback(...args);
+        clearTimeout(timeout);
+        timeout = setTimeout(next, wait);
+    };
+};

@@ -14,9 +14,8 @@ $alert-types: (
     border-radius: 10px;
     color: #fff;
     display: inline-flex;
-    margin-bottom: 15px;
     opacity: 0;
-    padding: 15px;
+    padding: 10px 15px;
     text-align: left;
     transition: background-color 0.2s linear, color 0.2s linear, box-shadow 0.2s linear;
     .icons {

@@ -14,7 +14,6 @@ const Root = () => {
             <BrowserRouter>
                 <ErrorBoundary>
                     <Header />
-                    <hr />
                     <Routes>
                         {routes.map(({ path, Component }) => {
                             return <Route key={path} path={path} element={<Component />} />;

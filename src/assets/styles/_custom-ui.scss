@@ -5,12 +5,12 @@
 @import './mixins';
 
 .container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
     position: relative;
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
 }
 @each $breakpoint, $container-max-width in $container-max-widths {
     @include media-breakpoint-up($breakpoint) {
@@ -23,7 +23,6 @@
 
 .ui {
     &-placeholder {
-        padding: 5px 10px;
         align-items: center;
         background-color: rgba($color-dark, 0.1);
         border: 2px dashed rgba($color-dark, 0.2);
@@ -33,6 +32,7 @@
         font-weight: 900;
         justify-content: center;
         max-width: 100%;
+        padding: 5px 10px;
         transition: border-color 0.2s linear, color 0.2s linear, background-color 0.2s linear;
         .theme-dark & {
             background-color: rgba($color-light, 0.1);
@@ -64,42 +64,33 @@
                 border-bottom-color: $color-light;
             }
         }
-
-        //&.is-red {
-        //    color: $color-red;
-        //    &:hover {
-        //        border-bottom-color: $color-red;
-        //    }
-        //}
     }
 
     &-input {
-        border: 1px solid rgba($color-purple, 0.1);
-        border-radius: 5px;
+        background-color: #fff;
+        border: none;
+        border-radius: 30px;
+        height: 60px;
+        line-height: 60px;
+        color: $color-dark;
         outline: none;
-        padding: 10px 15px;
+        padding: 0 25px;
+        font-size: 22px;
         transition: box-shadow 0.2s linear, border-color 0.2s linear, color 0.2s linear, background-color 0.2s linear;
         width: 100%;
-        color: $color-dark;
-        background-color: rgba($color-dark, 0.05);
+        box-shadow: 4px 4px 10px rgba($color-dark, 0.1);
+        &:focus,
         &:hover {
-            border-color: rgba($color-purple, 0.3);
-        }
-        &:focus {
-            border-color: $color-purple;
             box-shadow: 0 0 0 2px rgba($color-purple, 0.1);
         }
         &::placeholder {
             color: rgba($color-dark, 0.3);
         }
         .theme-dark & {
-            background-color: rgba($color-light, 0.05);
+            background-color: mix($color-light, $color-dark, 5%);
             color: $color-light;
-            border-color: rgba($color-light, 0.1);
+            &:focus,
             &:hover {
-                border-color: rgba($color-light, 0.3);
-            }
-            &:focus {
                 border-color: rgba($color-light, 0.4);
                 box-shadow: 0 0 0 2px rgba($color-light, 0.1);
             }
@@ -114,32 +105,47 @@
         &-wrapper {
             position: relative;
             .icons {
-                font-size: 16px;
-                left: 0;
-                line-height: 42px;
+                font-size: 22px;
+                right: 0;
+                line-height: 60px;
                 position: absolute;
                 text-align: center;
                 top: 0;
-                width: 42px;
+                width: 60px;
                 z-index: 1;
+                color: rgba($color-dark, 0.4);
+                transition: color 0.2s linear;
+                .theme-dark & {
+                    color: rgba($color-light, 0.3);
+                }
                 & + .ui-input {
-                    padding-left: 42px;
+                    padding-right: 60px;
                 }
             }
         }
     }
     &-box {
-        padding: 15px;
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba($color-dark, 0.1);
         color: $color-dark;
+        padding: 15px;
         transition: background-color 0.2s linear, color 0.2s linear, box-shadow 0.2s linear;
         .theme-dark & {
-            box-shadow: none;
             background-color: rgba($color-light, 0.05);
+            box-shadow: none;
             color: $color-light;
         }
+    }
+
+    &-d {
+        &-flex {
+            display: flex;
+        }
+    }
+
+    &-align-items-center {
+        align-items: center;
     }
     /* media break point varianted UI rules */
     @each $breakpoint in map-keys($grid-breakpoints) {
