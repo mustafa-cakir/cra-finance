@@ -7,15 +7,19 @@ import './Style.scss';
 import { IQuote } from '../../../../core/types';
 import { currenyFormatter } from '../../../../core/utils';
 import Percentage from '../../../common/Percentage';
+import Alert from '../../../common/Alert';
+import ShimmerLoading from './ShimmerLoading';
 
 const FavoriteStocksList = () => {
-    const { quotes } = useAppSelector(redux => redux.favoriteStocks.list);
+    const { quotes, isLoading, error } = useAppSelector(redux => redux.favoriteStocks.list);
     const dispatch = useAppDispatch();
 
     const removeStockHandler = (favStock: string) => {
         dispatch(removeItemFromQuotes(favStock));
         dispatch(removeItemFromFavStocks(favStock));
     };
+
+    if (error) return <Alert type="error" message={error} />;
 
     return (
         <div className="favorite-stocks-list">
@@ -38,6 +42,7 @@ const FavoriteStocksList = () => {
                     </div>
                 );
             })}
+            {isLoading && <ShimmerLoading />}
         </div>
     );
 };

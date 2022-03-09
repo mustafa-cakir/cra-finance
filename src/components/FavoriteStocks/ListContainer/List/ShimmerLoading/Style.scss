@@ -1,0 +1,9 @@
+.favorite-stocks-list-shimmer {
+    &-inner {
+        display: flex;
+        align-items: center;
+    }
+    &-sep {
+        margin: 0 15px;
+    }
+}
