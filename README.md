@@ -1,9 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+---
+
+Live Demo: https://mustafa-cakir-bux-zero.firebaseapp.com
+
+---
+
 ### State Management
 
 -   `Redux` has been used to manage the global-level or screen-level states
 -   `useState` has been used in various components to keep the state closer to where is actually being used
+
+---
 
 ### Folder Structure
 
@@ -32,6 +40,7 @@ fyi: The `feature folder structure` is recommended by the [Redux style guide](#h
 -   Once user clicks the theme switcher icon from the top-right corner, theme of the website is changed (light or dark). App container gets `theme-dark` or `theme-light` classname accordingly hence all components has different style for different theme. This configuration is stored in the `redux.user.theme` and as wel as in the localStorage under user object to keep the persistency
 -   Once user clicks the grid/list switcher icon, favorite stocks are either displayed in a table or in grid-view. This configuration is stored in the `redux.user.listingType` and as wel as in the localStorage under user object to keep the persistency. The available options are `table` | `grid`
 -   If user clicks the detail button from the favorite stocks list, the company detail modal is displayed. This component fetch the company data from `/stock/{symbol}/company` endpoint.
+-   Github actions are defined, and firebase configurations are completed. CI/CD is fully applied to poject. Once a commit is pushed to `main` branch, app automatically get build and deployed to firebase (URL: https://mustafa-cakir-bux-zero.firebaseapp.com)
 
 ### Tests
 
