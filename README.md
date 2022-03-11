@@ -64,9 +64,8 @@ fyi: The `feature folder structure` is recommended by the [Redux style guide](#h
 
 ### TODO's
 
--   Instead of using `/stock/{symbol}/quote` for searching, `/stock/search/{keyword}` could have been used
--   Instead of using `/stock/{symbol}/quote` for searching, `/stock/search/{keyword}` could have been used
--   User's favorite stocks are stored in the localStorage for persistency, this approach should be carried to endpoint and user profile
+-   Instead of using `/stock/{symbol}/quote` for searching, `/stock/search/{keyword}` could have been used.
+-   User's favorite stocks are stored in the localStorage for persistency, this approach should be carried to user profile endpoint.
 -   On initial load; user's previous favorite stocks are taken from localstorage as `['AAPL', 'GOOGLE']` and each of symbole are re-fetched from `/stock/{symbol}/quote` one by one, as the request(s) are resolved, they are appended to `redux.favoriteStocks.quote` as "first-come-first-serve", hence the order of the fav-list might be different on each page refresh. Ideally, single endpoint shoould be used to fetch-multi stock quotes at a time, the response should be in the given sorting.
 
 ## Available Scripts
