@@ -8,7 +8,8 @@ type Prop = {
 };
 
 const Percentage = ({ changePercent }: Prop) => {
-    const isUp = changePercent >= 0;
+    if (!changePercent) return null;
+    const isUp = changePercent > 0;
     return (
         <div className={`percentage ${isUp ? 'is-up' : 'is-down'}`}>
             <span>{percentageFormatter(changePercent)}</span>

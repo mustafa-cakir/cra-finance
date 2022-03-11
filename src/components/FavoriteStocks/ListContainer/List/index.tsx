@@ -1,49 +1,28 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../core/hooks';
-import Icons from '../../../common/Icons';
-import { removeItemFromFavStocks } from '../../../../core/reducers/userReducer';
-import { removeItemFromQuotes } from '../../FavoriteStocksSlice';
-import './Style.scss';
-import { IQuote } from '../../../../core/types';
-import { currenyFormatter } from '../../../../core/utils';
-import Percentage from '../../../common/Percentage';
+import { useAppSelector } from '../../../../core/hooks';
 import Alert from '../../../common/Alert';
+import TableLayout from './TableLayout';
+import GridLayout from './GridLayout';
 import ShimmerLoading from './ShimmerLoading';
+import EmptyState from './EmptyState';
 
 const FavoriteStocksList = () => {
-    const { quotes, isLoading, error } = useAppSelector(redux => redux.favoriteStocks.list);
-    const dispatch = useAppDispatch();
+    const { listingType } = useAppSelector(redux => redux.user);
+    const { error, isLoading, quotes } = useAppSelector(redux => redux.favoriteStocks.list);
 
-    const removeStockHandler = (favStock: string) => {
-        dispatch(removeItemFromQuotes(favStock));
-        dispatch(removeItemFromFavStocks(favStock));
-    };
-
-    if (error) return <Alert type="error" message={error} />;
+    if (isLoading) return <ShimmerLoading />;
+    if (quotes?.length === 0) return <EmptyState />;
 
     return (
-        <div className="favorite-stocks-list">
-            {quotes?.map((quote: IQuote) => {
-                const { symbol, companyName, latestPrice, currency, changePercent } = quote || {};
-                return (
-                    <div className="ui-box ui-mb-15" key={symbol}>
-                        <div className="favorite-stocks-list-inner">
-                            <div className="symbol">{symbol}</div>
-                            {companyName && <div className="separator" />}
-                            <div className="ui-text-muted company">{companyName}</div>
-                            <div className="latest-price">{currenyFormatter(latestPrice, currency)}</div>
-                            <div className="change-percentage">
-                                <Percentage changePercent={changePercent} />
-                            </div>
-                            <button type="button" className="ui-icon-button" onClick={() => removeStockHandler(symbol)}>
-                                <Icons name="x" />
-                            </button>
-                        </div>
-                    </div>
-                );
-            })}
-            {isLoading && <ShimmerLoading />}
-        </div>
+        <>
+            {error && (
+                <div className="ui-mb-15">
+                    <Alert type="error" message={error} />
+                </div>
+            )}
+            {listingType === 'table' && <TableLayout />}
+            {listingType === 'grid' && <GridLayout />}
+        </>
     );
 };
 

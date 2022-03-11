@@ -18,8 +18,8 @@ const FavoriteStocksListHeader = () => {
             <div className="sort-icon">
                 <button
                     type="button"
-                    onClick={() => changeListingType('list')}
-                    className={`ui-icon-button ${listingType === 'list' ? 'active' : ''}`}
+                    onClick={() => changeListingType('table')}
+                    className={`ui-icon-button ${listingType === 'table' ? 'active' : ''}`}
                 >
                     <Icons name="list" />
                 </button>

@@ -5,15 +5,13 @@ import './Style.scss';
 
 const ShimmerLoading = () => {
     return (
-        <div className="ui-box favorite-stocks-list-shimmer">
-            <Shimmer>
-                <div className="favorite-stocks-list-shimmer-inner">
-                    <ShimmerItem height={30} width={50} />
-                    <ShimmerItem height={20} width={3} className="dropdown-shimmer-sep" />
-                    <ShimmerItem height={20} width={200} />
-                </div>
-            </Shimmer>
-        </div>
+        <Shimmer>
+            <ShimmerItem height={30} width="25%" marginBottom={15} />
+            <ShimmerItem height={20} width="25%" marginBottom={15} />
+            <ShimmerItem height={20} width="50%" marginBottom={15} />
+            <ShimmerItem height={20} width="50%" marginBottom={15} />
+            <ShimmerItem height={20} width="50%" />
+        </Shimmer>
     );
 };
 

@@ -2,7 +2,7 @@ export type IFavStockItem = string;
 
 export type ITheme = 'dark' | 'light';
 
-export type IListingType = 'list' | 'grid';
+export type IListingType = 'table' | 'grid';
 
 export type IUser = {
     listingType: IListingType;

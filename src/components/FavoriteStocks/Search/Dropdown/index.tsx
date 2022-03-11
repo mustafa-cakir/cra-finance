@@ -58,7 +58,11 @@ const FavoriteStocksSearchDropdown = ({ keyword, addStockToFavCallback }: Props)
         );
     }
 
-    return <div className="empty-state">No result foundç</div>;
+    return (
+        <div className="alert-contaıner">
+            <Alert type="info" message="No result found." />
+        </div>
+    );
 };
 
 export default FavoriteStocksSearchDropdown;

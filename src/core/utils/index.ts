@@ -28,14 +28,14 @@ export const debounce = (callback: (...arg: any[]) => void, wait = 500) => {
 };
 
 export const currenyFormatter = (price: number, currency = 'USD'): string => {
-    return price.toLocaleString('en-US', {
+    return price?.toLocaleString('en-US', {
         style: 'currency',
         currency,
     });
 };
 
 export const percentageFormatter = (percentage: number): string => {
-    return percentage.toLocaleString('en-US', {
+    return percentage?.toLocaleString('en-US', {
         style: 'percent',
         minimumFractionDigits: 2,
     });

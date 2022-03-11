@@ -8,8 +8,8 @@ import {
 import { getUserStateFromLocalStorage } from '../../core/utils';
 import { AppThunk } from '../../core/store';
 
-const fetchIEX = (API: string) => {
-    // return fetch(`${window.location.origin}/dummyData/dummyCompanyData.json?api=${API}`);
+export const fetchIEX = (API: string) => {
+    // return fetch(`${window.location.origin}/dummyData/dummyQuoteData.json?api=${API}`);
     return fetch(`${IEX_BASE_DOMAIN}${API}?token=${IEX_TOKEN}`);
 };
 
@@ -25,7 +25,6 @@ export const fetchStockQuote = createAsyncThunk('stock/quote', async (symbol: st
     return fetchIEX(GET_STOCK_QUOTE_BY_SYMBOL.replace('{symbol}', symbol))
         .then(res => {
             if (res.ok) return res.json();
-            // return rejectWithValue('Opps there seems to be an error. Please try again.');
             return res?.text()?.then(text => {
                 return rejectWithValue(text);
             });
@@ -47,7 +46,6 @@ export const fetchStockCompany = createAsyncThunk('stock/company', async (symbol
     return fetchIEX(GET_STOCK_COMPANY_BY_SYMBOL.replace('{symbol}', symbol))
         .then(res => {
             if (res.ok) return res.json();
-            // return rejectWithValue('Opps there seems to be an error. Please try again.');
             return res?.text()?.then(text => {
                 return rejectWithValue(text);
             });

@@ -8,7 +8,7 @@ const prevUserState = getUserStateFromLocalStorage();
 const initialState: IUser = {
     theme: 'light',
     favStocks: [],
-    listingType: 'list',
+    listingType: 'table',
     // if prevUserState existed, merge it with the empty initialState. Merge instead of replace,
     // because some new props might be added to initialState in the future
     ...(prevUserState && prevUserState),

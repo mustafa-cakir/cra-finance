@@ -122,7 +122,7 @@
             color: rgba($color-dark, 0.3);
         }
         .theme-dark & {
-            background-color: mix($color-light, $color-dark, 5%);
+            background-color: mix($color-light, $color-dark, 10%);
             color: $color-light;
             &:focus,
             &:hover {
@@ -160,6 +160,7 @@
         }
     }
     &-box {
+	    position: relative;
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba($color-dark, 0.1);
