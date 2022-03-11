@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Icons from '../../../common/components/Icons';
-import WithAnimaation from '../../../common/WithAnimation';
+import WithAnimaation from '../../../common/components/WithAnimation';
 import FavoriteStocksSearchDropdown from './Dropdown';
 import useCloseOnClickOutside from '../../../common/hooks/useCloseOnClickOutside';
 import { debounce } from '../../../common/utils';

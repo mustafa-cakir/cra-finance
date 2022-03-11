@@ -1,7 +1,7 @@
-import { URL_HOMEPAGE, URL_UIKIT } from '../common/constants';
-import { IRoutes } from '../app/types';
-import Homepage from '../screens/Homepage';
-import UIKit from '../screens/UIKit';
+import { URL_HOMEPAGE, URL_UIKIT } from '../../common/constants';
+import { IRoutes } from '../types';
+import Homepage from '../../screens/Homepage';
+import UIKit from '../../screens/UIKit';
 
 const routes: IRoutes = [
     {

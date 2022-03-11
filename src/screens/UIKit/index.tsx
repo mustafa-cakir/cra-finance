@@ -6,7 +6,7 @@ import Modal from '../../common/components/Modal';
 import Percentage from '../../common/components/Percentage';
 import Shimmer from '../../common/components/Shimmer';
 import ShimmerItem from '../../common/components/Shimmer/ShimmerItem';
-import WithAnimaation from '../../common/WithAnimation';
+import WithAnimaation from '../../common/components/WithAnimation';
 
 const UIKit = () => {
     const [isModal, setIsModal] = useState(false);
