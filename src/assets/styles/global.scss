@@ -86,9 +86,6 @@ select {
     margin: 0;
     border: none;
     transition: background-color 0.2s linear, color 0.2s linear;
-    .theme-dark & {
-        color: $color-light;
-    }
 }
 
 textarea {

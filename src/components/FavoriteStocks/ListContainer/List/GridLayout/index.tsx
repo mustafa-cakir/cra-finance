@@ -47,7 +47,7 @@ const GridLayout = () => {
                                     <div>
                                         <button
                                             onClick={() => setOpenDetailBySymbolClickHandler(symbol)}
-                                            className="read-more ui-link"
+                                            className="ui-read-more-btn ui-mt-5"
                                             type="button"
                                         >
                                             Details <Icons name="chevron-right" />

@@ -41,6 +41,7 @@ const TableLayout = () => {
                         <tr>
                             <th className="w-100">Symbol</th>
                             <th className="min-w-175">Company name</th>
+                            <th className="w-100" />
                             <th className="ui-text-right w-200">Current stock price</th>
                             <th className="ui-text-right w-200">Today's change</th>
                             <th className="w-75" />
@@ -52,11 +53,11 @@ const TableLayout = () => {
                             return (
                                 <tr key={symbol}>
                                     <td>{symbol}</td>
+                                    <td>{companyName}</td>
                                     <td>
-                                        {companyName}
                                         <button
                                             onClick={() => setOpenDetailBySymbolClickHandler(symbol)}
-                                            className="ui-ml-5 read-more ui-link"
+                                            className="ui-read-more-btn"
                                             type="button"
                                         >
                                             Details <Icons name="chevron-right" />
