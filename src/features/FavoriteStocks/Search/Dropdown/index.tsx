@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../common/hooks';
 import Alert from '../../../../common/components/Alert';
-import { addItemToFavStocks } from '../../../../app/reducers/userReducer';
+import { addItemToFavStocks } from '../../../../app/slices/userSlice';
 import Icons from '../../../../common/components/Icons';
 import ShimmerLoading from './ShimmerLoading';
 import fetchSearch from '../SearchAPI';

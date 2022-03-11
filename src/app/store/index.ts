@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import userReducer from '../reducers/userReducer';
+import userReducer from '../slices/userSlice';
 import favoriteStocksReducer from '../../features/FavoriteStocks/FavoriteStocksSlice';
 import searchReducer from '../../features/FavoriteStocks/Search/SearchSlice';
 

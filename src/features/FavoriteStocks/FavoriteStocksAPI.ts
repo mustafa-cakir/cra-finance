@@ -10,15 +10,13 @@ import { IError, IQuote } from '../../app/types';
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched. Thunks are
 // typically used to make async requests.
-
-// We can also write thunks by hand, which may contain both sync and async logic.
-// Here's an example of conditionally dispatching actions based on current state.
 export const fetchQuote = createAsyncThunk('stock/quote', async (symbol: string, { rejectWithValue }) => {
     return FetchIEX(GET_STOCK_QUOTE_BY_SYMBOL.replace('{symbol}', symbol)).then(
         (result: IQuote) => result,
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
+        // https://reactjs.org/docs/faq-ajax.html
         (error: IError) => rejectWithValue(error?.message || 'Opps there seems to be an error. Please try again.'),
     );
 });

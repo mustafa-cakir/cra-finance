@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { toggleTheme } from '../../../app/reducers/userReducer';
+import { toggleTheme } from '../../../app/slices/userSlice';
 import './Style.scss';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 const ThemeSwitcher = () => {
     const dispatch = useAppDispatch();

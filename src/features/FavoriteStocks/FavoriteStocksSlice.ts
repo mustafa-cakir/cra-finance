@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IFavoriteStocks, IQuote } from '../../app/types';
+import { IFavoriteStocks, IFavStockItem, IQuote } from '../../app/types';
 import { fetchQuote } from './FavoriteStocksAPI';
 
 const initialState: IFavoriteStocks = {
@@ -10,9 +10,14 @@ const initialState: IFavoriteStocks = {
 
 const addItemToQuotesHandler = (quotes: IQuote[], quote: IQuote) => {
     if (quotes.findIndex(x => x.symbol === quote.symbol) > -1) {
+        // if Quote is already exist, then do nothing
         return quotes;
     }
     return [...quotes, quote];
+};
+
+const removeItemFromQuotesHandler = (quotes: IQuote[], symbol: string) => {
+    return quotes.filter(x => x.symbol !== symbol);
 };
 
 export const favoriteStocksSlice = createSlice({
@@ -21,7 +26,7 @@ export const favoriteStocksSlice = createSlice({
     // The `reducers` field lets us define reducers and generate associated actions
     reducers: {
         removeItemFromQuotes: (state, action: PayloadAction<string>) => {
-            state.quotes = state.quotes.filter(x => x.symbol !== action.payload);
+            state.quotes = removeItemFromQuotesHandler(state.quotes, action.payload);
         },
         addItemToQuotes: (state, action: PayloadAction<IQuote>) => {
             state.quotes = addItemToQuotesHandler(state.quotes, action.payload);

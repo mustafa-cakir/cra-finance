@@ -5,7 +5,7 @@ import Percentage from '../../../../../common/components/Percentage';
 import Icons from '../../../../../common/components/Icons';
 import { useAppDispatch, useAppSelector } from '../../../../../common/hooks';
 import { removeItemFromQuotes } from '../../../FavoriteStocksSlice';
-import { removeItemFromFavStocks } from '../../../../../app/reducers/userReducer';
+import { removeItemFromFavStocks } from '../../../../../app/slices/userSlice';
 import './Style.scss';
 import CompanyDetails from '../../../CompanyDetails';
 import Modal from '../../../../../common/components/Modal';

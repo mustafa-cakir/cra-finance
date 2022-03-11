@@ -1,7 +1,7 @@
 import React from 'react';
 import Icons from '../../../../common/components/Icons';
 import { useAppDispatch, useAppSelector } from '../../../../common/hooks';
-import { setListingType } from '../../../../app/reducers/userReducer';
+import { setListingType } from '../../../../app/slices/userSlice';
 import { IListingType } from '../../../../app/types';
 import './Style.scss';
 
