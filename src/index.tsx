@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import './assets/styles/global.scss';
-import { store } from './core/store';
-import Root from './core/Root';
-import { fetchQuotesOnInit } from './components/FavoriteStocks/FavoriteStocksAPI';
+import { store } from './app/store';
+import App from './app/App';
+import { fetchQuotesOnInit } from './features/FavoriteStocks/FavoriteStocksAPI';
 
 store.dispatch(fetchQuotesOnInit());
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <Root />
+            <App />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root'),

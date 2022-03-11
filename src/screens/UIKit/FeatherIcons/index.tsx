@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import Icons from '../../../components/common/Icons';
+import Icons from '../../../common/components/Icons';
 import './Style.scss';
 
 const FeatherIcons = () => {

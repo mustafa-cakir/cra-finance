@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Alert from '../../components/common/Alert';
+import Alert from '../../common/components/Alert';
 import FeatherIcons from './FeatherIcons';
-import Icons from '../../components/common/Icons';
-import Modal from '../../components/common/Modal';
-import Percentage from '../../components/common/Percentage';
-import Shimmer from '../../components/common/Shimmer';
-import ShimmerItem from '../../components/common/Shimmer/ShimmerItem';
-import WithAnimaation from '../../components/common/WithAnimation';
+import Icons from '../../common/components/Icons';
+import Modal from '../../common/components/Modal';
+import Percentage from '../../common/components/Percentage';
+import Shimmer from '../../common/components/Shimmer';
+import ShimmerItem from '../../common/components/Shimmer/ShimmerItem';
+import WithAnimaation from '../../common/WithAnimation';
 
 const UIKit = () => {
     const [isModal, setIsModal] = useState(false);

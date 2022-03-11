@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import FavoriteStocks from '../../components/FavoriteStocks';
+import FavoriteStocks from '../../features/FavoriteStocks';
 
 const Homepage = () => {
     useEffect(() => {
