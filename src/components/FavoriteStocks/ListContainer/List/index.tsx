@@ -8,7 +8,7 @@ import EmptyState from './EmptyState';
 
 const FavoriteStocksList = () => {
     const { listingType } = useAppSelector(redux => redux.user);
-    const { error, isLoading, quotes } = useAppSelector(redux => redux.favoriteStocks.list);
+    const { error, isLoading, quotes } = useAppSelector(redux => redux.favoriteStocks);
 
     if (isLoading) return <ShimmerLoading />;
     if (quotes?.length === 0) return <EmptyState />;

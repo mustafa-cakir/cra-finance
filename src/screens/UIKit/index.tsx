@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Alert from '../../components/common/Alert';
 import FeatherIcons from './FeatherIcons';
 import Icons from '../../components/common/Icons';
+import Modal from '../../components/common/Modal';
+import Percentage from '../../components/common/Percentage';
+import Shimmer from '../../components/common/Shimmer';
+import ShimmerItem from '../../components/common/Shimmer/ShimmerItem';
+import WithAnimaation from '../../components/common/WithAnimation';
 
 const UIKit = () => {
+    const [isModal, setIsModal] = useState(false);
+    const [isWithAnimation, setIsWithAnimation] = useState(false);
+
     return (
         <div className="ui-kit-page">
             <div className="container">
@@ -22,29 +30,101 @@ const UIKit = () => {
                     <div className="ui-text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
                 </div>
                 <div className="ui-box ui-mb-30">
-                    <h2>Anchor Tag</h2>
-                    <button type="button" className="ui-link">
-                        Some Link
+                    <h2>Percantage Component</h2>
+                    <div className="ui-mb-10">
+                        <Percentage changePercent={-0.12} />
+                    </div>
+                    <div className="ui-mb-10">
+                        <Percentage changePercent={0.14} />
+                    </div>
+                </div>
+                <div className="ui-box ui-mb-30">
+                    <h2>Shimmer Loading</h2>
+                    <Shimmer>
+                        <ShimmerItem height={20} width={200} marginBottom={10} />
+                        <ShimmerItem height={20} width={200} marginBottom={10} />
+                        <ShimmerItem height={20} width={300} marginBottom={10} />
+                        <ShimmerItem height={20} width={400} marginBottom={10} />
+                        <ShimmerItem height={20} width={400} marginBottom={10} />
+                        <ShimmerItem height={20} width={300} marginBottom={10} />
+                    </Shimmer>
+                </div>
+                <div className="ui-box ui-mb-30">
+                    <h2>With Animation</h2>
+                    <button type="button" className="ui-link" onClick={() => setIsWithAnimation(x => !x)}>
+                        Click to toggle content below (with animation)
+                    </button>
+                    <WithAnimaation isShow={isWithAnimation}>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                        </p>
+                    </WithAnimaation>
+                </div>
+                <div className="ui-box ui-mb-30">
+                    <h2>Modal</h2>
+                    {isModal && (
+                        <Modal closeHandler={() => setIsModal(false)} title="The standard Lorem Ipsum passage">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum
+                            </p>
+                            <strong>
+                                Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
+                            </strong>
+                            <p>
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                                architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+                                sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                                voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit
+                                amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut
+                                labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+                                nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
+                                consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
+                                nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
+                                pariatur?
+                            </p>
+                        </Modal>
+                    )}
+                    <button type="button" className="ui-link" onClick={() => setIsModal(true)}>
+                        Click to open modal
                     </button>
                 </div>
                 <div className="ui-box ui-mb-30">
                     <h2>Alert Component</h2>
-                    <Alert
-                        type="error"
-                        message="Error messge will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                    />
-                    <Alert
-                        type="info"
-                        message="Info messge will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                    />
-                    <Alert
-                        type="success"
-                        message="Success messge will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                    />
-                    <Alert
-                        type="warning"
-                        message="Warning messge will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                    />
+                    <div className="ui-mb-15">
+                        <Alert
+                            type="error"
+                            message="Error messge will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                        />
+                    </div>
+
+                    <div className="ui-mb-15">
+                        <Alert
+                            type="info"
+                            message="Info messge will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                        />
+                    </div>
+                    <div className="ui-mb-15">
+                        <Alert
+                            type="success"
+                            message="Success messge will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                        />
+                    </div>
+                    <div className="ui-mb-15">
+                        <Alert
+                            type="warning"
+                            message="Warning messge will go here. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                        />
+                    </div>
                 </div>
 
                 <div className="ui-box ui-mb-30">

@@ -53,18 +53,17 @@ export type IQuote = {
 };
 
 export type ISearch = {
-    company: null | ICompany;
-    isLoading: boolean;
-    error: null | string;
-};
-
-export type IList = {
-    quotes: IQuote[];
+    quote: null | IQuote;
     isLoading: boolean;
     error: null | string;
 };
 
 export type IFavoriteStocks = {
-    search: ISearch;
-    list: IList;
+    quotes: IQuote[];
+    isLoading: boolean;
+    error: null | string;
+};
+
+export type IError = null | {
+    message?: string;
 };

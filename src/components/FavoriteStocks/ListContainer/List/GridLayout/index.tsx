@@ -7,13 +7,13 @@ import { useAppDispatch, useAppSelector } from '../../../../../core/hooks';
 import { removeItemFromQuotes } from '../../../FavoriteStocksSlice';
 import { removeItemFromFavStocks } from '../../../../../core/reducers/userReducer';
 import './Style.scss';
-import Details from '../../../Details';
+import CompanyDetails from '../../../CompanyDetails';
 import Modal from '../../../../common/Modal';
 
 const GridLayout = () => {
-    const [openDetailBySymbol, setOpenDetailBySymbol] = useState('');
+    const [openCompanyDetailBySymbol, setOpenCompanyDetailBySymbol] = useState('');
     const dispatch = useAppDispatch();
-    const { quotes } = useAppSelector(redux => redux.favoriteStocks.list);
+    const { quotes } = useAppSelector(redux => redux.favoriteStocks);
 
     const removeStockHandler = (favStock: string) => {
         dispatch(removeItemFromQuotes(favStock));
@@ -21,21 +21,25 @@ const GridLayout = () => {
     };
 
     const setOpenDetailBySymbolClickHandler = (symbol: string) => {
-        setOpenDetailBySymbol(openDetailBySymbol === symbol ? '' : symbol); // toggle or set
+        setOpenCompanyDetailBySymbol(openCompanyDetailBySymbol === symbol ? '' : symbol); // toggle or set
+    };
+
+    const closeCompanyDetailModalHandler = () => {
+        setOpenCompanyDetailBySymbol('');
     };
 
     return (
         <div className="favorite-stocks-list-grid">
+            {openCompanyDetailBySymbol && (
+                <Modal closeHandler={closeCompanyDetailModalHandler}>
+                    <CompanyDetails symbol={openCompanyDetailBySymbol} />
+                </Modal>
+            )}
             <div className="grid-row">
                 {quotes?.map((quote: IQuote) => {
                     const { symbol, companyName, latestPrice, currency, changePercent } = quote || {};
                     return (
                         <div className="grid-col col-box" key={symbol}>
-                            {openDetailBySymbol === symbol && (
-                                <Modal closeHandler={() => setOpenDetailBySymbol('')}>
-                                    <Details symbol={openDetailBySymbol} />
-                                </Modal>
-                            )}
                             <div className="ui-box">
                                 <div className="favorite-stocks-list-grid-inner">
                                     <div className="symbol">{symbol}</div>

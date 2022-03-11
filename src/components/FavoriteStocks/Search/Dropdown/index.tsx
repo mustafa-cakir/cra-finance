@@ -4,7 +4,9 @@ import Alert from '../../../common/Alert';
 import { addItemToFavStocks } from '../../../../core/reducers/userReducer';
 import Icons from '../../../common/Icons';
 import ShimmerLoading from './ShimmerLoading';
-import { fetchStockCompany, fetchStockQuote } from '../../FavoriteStocksAPI';
+import fetchSearch from '../SearchAPI';
+import { IQuote } from '../../../../core/types';
+import { addItemToQuotes } from '../../FavoriteStocksSlice';
 import './Style.scss';
 
 type Props = {
@@ -14,26 +16,20 @@ type Props = {
 
 const FavoriteStocksSearchDropdown = ({ keyword, addStockToFavCallback }: Props) => {
     const dispatch = useAppDispatch();
-    const { search } = useAppSelector(redux => redux.favoriteStocks);
+    const { quote, isLoading, error } = useAppSelector(redux => redux.search);
     const { favStocks } = useAppSelector(redux => redux.user);
-    const { company, isLoading, error } = search || {};
 
     useEffect(() => {
         if (keyword) {
-            void dispatch(fetchStockCompany(keyword));
+            void dispatch(fetchSearch(keyword));
         }
     }, [dispatch, keyword]);
 
-    const addStockToFavHandler = (symbol: string) => {
-        if (favStocks.indexOf(symbol) < 0) {
-            // Check if stock is already in the favStocks
-            void dispatch(fetchStockQuote(symbol));
-            dispatch(addItemToFavStocks(symbol));
-        }
+    const addStockToFavHandler = (payload: IQuote) => {
+        dispatch(addItemToQuotes(payload));
+        dispatch(addItemToFavStocks(payload.symbol));
         addStockToFavCallback();
     };
-
-    const { symbol, companyName } = company || {};
 
     if (error) {
         return (
@@ -45,14 +41,14 @@ const FavoriteStocksSearchDropdown = ({ keyword, addStockToFavCallback }: Props)
 
     if (isLoading) return <ShimmerLoading />;
 
-    if (symbol) {
+    if (quote?.symbol) {
         return (
-            <button type="button" className="company-btn" onClick={() => addStockToFavHandler(symbol)}>
-                <div className="symbol">{symbol}</div>
-                {companyName && <div className="separator" />}
-                <div className="ui-text-muted company">{companyName}</div>
+            <button type="button" className="company-btn" onClick={() => addStockToFavHandler(quote)}>
+                <div className="symbol">{quote.symbol}</div>
+                {quote.companyName && <div className="separator" />}
+                <div className="ui-text-muted company">{quote.companyName}</div>
                 <div className="fav-icon">
-                    <Icons name={favStocks.indexOf(symbol) > -1 ? 'check-circle' : 'plus-circle'} />
+                    <Icons name={favStocks.indexOf(quote.symbol) > -1 ? 'check-circle' : 'plus-circle'} />
                 </div>
             </button>
         );

@@ -1,17 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import {
-    IEX_BASE_DOMAIN,
-    IEX_TOKEN,
-    GET_STOCK_COMPANY_BY_SYMBOL,
-    GET_STOCK_QUOTE_BY_SYMBOL,
-} from '../../core/constants/apis';
+import { GET_STOCK_QUOTE_BY_SYMBOL } from '../../core/constants/apis';
 import { getUserStateFromLocalStorage } from '../../core/utils';
 import { AppThunk } from '../../core/store';
-
-export const fetchIEX = (API: string) => {
-    // return fetch(`${window.location.origin}/dummyData/dummyQuoteData.json?api=${API}`);
-    return fetch(`${IEX_BASE_DOMAIN}${API}?token=${IEX_TOKEN}`);
-};
+import FetchIEX from '../../core/api';
+import { IError, IQuote } from '../../core/types';
 
 // The function below is called a thunk and alloasdws us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -21,36 +13,20 @@ export const fetchIEX = (API: string) => {
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
-export const fetchStockQuote = createAsyncThunk('stock/quote', async (symbol: string, { rejectWithValue }) => {
-    return fetchIEX(GET_STOCK_QUOTE_BY_SYMBOL.replace('{symbol}', symbol))
-        .then(res => {
-            if (res.ok) return res.json();
-            return res?.text()?.then(text => {
-                return rejectWithValue(text);
-            });
-        })
-        .catch(() => {
-            return rejectWithValue('Opps there seems to be an error. Please try again.');
-        });
+export const fetchQuote = createAsyncThunk('stock/quote', async (symbol: string, { rejectWithValue }) => {
+    return FetchIEX(GET_STOCK_QUOTE_BY_SYMBOL.replace('{symbol}', symbol)).then(
+        (result: IQuote) => result,
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error: IError) => rejectWithValue(error?.message || 'Opps there seems to be an error. Please try again.'),
+    );
 });
 
-export const fetchStockQuotesOnInit = (): AppThunk => dispatch => {
+export const fetchQuotesOnInit = (): AppThunk => dispatch => {
     const prevUserState = getUserStateFromLocalStorage();
     const { favStocks } = prevUserState || {};
     if (favStocks && favStocks.length > 0) {
-        favStocks.map(symbol => dispatch(fetchStockQuote(symbol)));
+        favStocks.map(symbol => dispatch(fetchQuote(symbol)));
     }
 };
-
-export const fetchStockCompany = createAsyncThunk('stock/company', async (symbol: string, { rejectWithValue }) => {
-    return fetchIEX(GET_STOCK_COMPANY_BY_SYMBOL.replace('{symbol}', symbol))
-        .then(res => {
-            if (res.ok) return res.json();
-            return res?.text()?.then(text => {
-                return rejectWithValue(text);
-            });
-        })
-        .catch(() => {
-            return rejectWithValue('Opps there seems to be an error. Please try again.');
-        });
-});

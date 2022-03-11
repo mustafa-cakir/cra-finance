@@ -15,7 +15,7 @@
     }
     &-overlay {
         animation: fadeInBg 0.15s linear forwards;
-        background-color: $color-blue;
+        background-color: $color-dark;
         bottom: 0;
         left: 0;
         opacity: 0;
@@ -48,9 +48,14 @@
         text-align: left;
         width: 100%;
         z-index: 3;
+
         animation: scaleIn 0.3s ease-in forwards;
         animation-delay: 0.15s;
         opacity: 0;
+
+        .theme-dark & {
+            background-color: mix($color-light, $color-dark, 5%);
+        }
         @include media-breakpoint-up(lg) {
             margin: 0 auto;
         }
@@ -64,22 +69,27 @@
     }
     &-title {
         font-size: 18px;
+        margin-top: 0;
         margin-bottom: 15px;
     }
     &-close-btn {
         align-items: center;
-        background-color: #fff;
+        background-color: $color-red;
         border-radius: 100% 100%;
-        box-shadow: 0 0 5px 1px rgba($color-dark, 0.1);
-        color: $color-red;
+        color: #fff;
         display: flex;
-        height: 20px;
+        height: 30px;
+        font-size: 18px;
         justify-content: center;
         position: absolute;
-        right: 15px;
-        top: 15px;
-        transition: background-color 0.2s linear;
-        width: 20px;
+        right: -10px;
+        top: -10px;
+        transition: background-color 0.2s linear, transform 0.2s linear, box-shadow 0.2s linear;
+        width: 30px;
         z-index: 2;
+        &:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba($color-dark, 0.3);
+        }
     }
 }

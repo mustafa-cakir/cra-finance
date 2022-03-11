@@ -49,6 +49,10 @@ body {
         background-color: $color-dark;
         color: $color-light;
     }
+    &-content {
+        position: relative;
+        z-index: 4;
+    }
 }
 
 code {

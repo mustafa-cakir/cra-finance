@@ -14,6 +14,15 @@ const initialState: IUser = {
     ...(prevUserState && prevUserState),
 };
 
+const addItemToFavStocksHandler = (favStocks: IFavStockItem[], favStock: IFavStockItem) => {
+    if (favStocks.indexOf(favStock) > -1) return favStocks;
+    return [...favStocks, favStock];
+};
+
+const removeItemToFavStocksHandler = (favStocks: IFavStockItem[], favStock: IFavStockItem) => {
+    return favStocks.filter(x => x !== favStock);
+};
+
 const userSlice = createSlice({
     name: 'global',
     initialState,
@@ -35,12 +44,12 @@ const userSlice = createSlice({
             setUserStateToLocalStorage(state);
         },
         addItemToFavStocks: (state, action: PayloadAction<IFavStockItem>) => {
-            state.favStocks = [...state.favStocks, action.payload];
+            state.favStocks = addItemToFavStocksHandler(state.favStocks, action.payload);
             // store the user state into localStorage for persistancy
             setUserStateToLocalStorage(state);
         },
         removeItemFromFavStocks: (state, action: PayloadAction<IFavStockItem>) => {
-            state.favStocks = state.favStocks.filter(x => x !== action.payload);
+            state.favStocks = removeItemToFavStocksHandler(state.favStocks, action.payload);
             // store the user state into localStorage for persistancy
             setUserStateToLocalStorage(state);
         },

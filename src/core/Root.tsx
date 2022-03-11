@@ -14,12 +14,14 @@ const Root = () => {
             <BrowserRouter>
                 <ErrorBoundary>
                     <Header />
-                    <Routes>
-                        {routes.map(({ path, Component }) => {
-                            return <Route key={path} path={path} element={<Component />} />;
-                        })}
-                        <Route path="*" element={<Page404 />} />
-                    </Routes>
+                    <div className="app-content">
+                        <Routes>
+                            {routes.map(({ path, Component }) => {
+                                return <Route key={path} path={path} element={<Component />} />;
+                            })}
+                            <Route path="*" element={<Page404 />} />
+                        </Routes>
+                    </div>
                     <hr />
                     <Footer />
                 </ErrorBoundary>
