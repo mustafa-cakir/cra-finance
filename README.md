@@ -55,210 +55,239 @@ fyi: The `feature folder structure` is recommended by the [Redux style guide](#h
 
 ### Test Summary
 
-    Test Suites: 29 passed, 29 total
-    Tests:       80 passed, 80 total
+    Test Suites: 32 passed, 32 total
+    Tests:       96 passed, 96 total
     Snapshots:   0 total
-    Time:        3.579 s
+    Time:        2.924 s, estimated 3 s
 
 ---
 
 ### Test Cases
 
--   `[PASS] src/common/components/Shimmer/ShimmerItem.spec.tsx`
--   Shimmer Common Component
-    -   ✓ should render shimmer items component (39 ms)
-    -   ✓ should reflect the className prop to shimmer items properly (6 ms)
-    -   ✓ should reflect the marginBottom prop to shimmer items properly (41 ms)
-    -   ✓ should reflect the height prop to shimmer items properly (12 ms)
-    -   ✓ should reflect the width prop to shimmer items properly (11 ms)
-
-`[PASS] src/common/components/Modal/Modal.spec.tsx`
-
--   Modal Common Component
-    -   ✓ should render modal component (46 ms)
-    -   ✓ should modal component display content inside the modal (11 ms)
-    -   ✓ should modal component refrelect max-width prop (41 ms)
-    -   ✓ should modal component reflects title prop (9 ms)
-    -   ✓ should trigger closeHandler upon clicking the close button (19 ms)
-
-`[PASS] src/features/Header/Header.spec.tsx`
-
--   Header Component
-    -   ✓ should render header component without any error (58 ms)
-    -   ✓ should display slogan in the header (14 ms)
-    -   ✓ should display logo in the header (13 ms)
-    -   ✓ should render themeSwitcher component (14 ms)
-    -   ✓ should render menuItems component (28 ms)
-
-`[PASS] src/screens/Homepage/Homepage.spec.tsx`
-
--   Homepage Screen
-    -   ✓ should render homepage screen without any error (80 ms)
-
-`[PASS] src/app/App.spec.tsx`
+`[PASS] - src/app/App.spec.tsx`
 
 -   App
-    -   ✓ should render app without any error (103 ms)
+    -   ✓ should render app without any error (73 ms)
 
-`[PASS] src/screens/UIKit/UIKit.spec.tsx`
-
--   UIKit Screen
-    -   ✓ should render uikit screen without any error (305 ms)
-
-`[PASS] src/features/FavoriteStocks/CompanyDetails/CompanyDetails.spec.tsx`
-
--   Company Details Component
-    -   ✓ should display without any error and display all company details (104 ms)
-    -   ✓ should display error message if nothing is found (24 ms)
-    -   ✓ should display empty state if nothing is found (26 ms)
-
-`[PASS] src/features/FavoriteStocks/Search/Dropdown/Dropdown.spec.tsx`
-
--   Dropdown Component
-    -   ✓ should render dropdown component without any error (36 ms)
-    -   ✓ should make the search based on the keyword provided and display the results (80 ms)
-    -   ✓ should display error if nothing is found (33 ms)
-    -   ✓ should clicking the button triggeres addStockToFavCallback callbackk (67 ms)
-    -   ✓ should clicking the button add company to state (46 ms)
-
-`[PASS] src/common/components/Percentage/Percentage.spec.tsx`
-
--   Percentage Common Component
-    -   ✓ should render percentage component (43 ms)
-    -   ✓ should format percentage properly based on the changed percentage (6 ms)
--   Change percentage is negative
-    -   ✓ should display text as green (6 ms)
-    -   ✓ should display up icon (4 ms)
-    -   ✓ should display text as red (4 ms)
-    -   ✓ should display down icon (3 ms)
-
-`[PASS] src/features/FavoriteStocks/ListContainer/ListHeader/ListHeader.spec.tsx`
-
--   Favorite Stocks List Header Component
-    -   ✓ should render header component without any error (29 ms)
-    -   ✓ should render the title (8 ms)
-    -   ✓ should render the listing type toggle buttons (7 ms)
-    -   ✓ should table list type button is activated by default (5 ms)
-    -   ✓ should clicking the inactive button switch the global listing type (15 ms)
-
-`[PASS] src/features/FavoriteStocks/FavoriteStocksAPI.spec.ts`
+`[PASS] - src/features/FavoriteStocks/FavoriteStocksAPI.spec.ts`
 
 -   Favorite Stocks Api
-    -   ✓ should fetch quote (23 ms)
-    -   ✓ should fetch multiple quotes on initial load (8 ms)
+    -   ✓ should fetch quote (26 ms)
+    -   ✓ should fetch multiple quotes on initial load (7 ms)
 
-`[PASS] src/features/FavoriteStocks/ListContainer/ListContainer.spec.tsx`
-
--   Favorite Stocks List Contianer Component
-    -   ✓ should render list container component without any error (27 ms)
-
-`[PASS] src/features/FavoriteStocks/Search/Search.spec.tsx`
-
--   Favorite Stocks Search Component
-    -   ✓ should render search component without any error (31 ms)
-    -   ✓ should search input have empty value by default (5 ms)
-    -   ✓ should display the type value in the input (17 ms)
-    -   ✓ should trigger search after typing more than 2 letters and open dropdown (5 ms)
-
-`[PASS] src/features/FavoriteStocks/Search/SearchAPI.spec.tsx`
-
--   Fetch Search Api
-    -   ✓ should fetch search as expected (26 ms)
-    -   ✓ should fetch search handle error (7 ms)
-
-`[PASS] src/common/components/ThemeSwitcher/ThemeSwitcher.spec.tsx`
-
--   ThemeSwitcher Common Component
-    -   ✓ should render percentage component (32 ms)
-    -   ✓ should not be checked if theme is light (from the redux store) (6 ms)
-    -   ✓ should be checked if theme is dark (from the redux store) (4 ms)
-    -   ✓ should toggle the theme upon clicking (20 ms)
-
-`[PASS] src/common/components/Alert/Alert.spec.tsx`
-
--   Alert Common Component
-    -   ✓ should render alert component (28 ms)
-    -   ✓ should alert component display message prop (6 ms)
-    -   ✓ should alert component type set to error (7 ms)
-    -   ✓ should alert component type set to info (6 ms)
-    -   ✓ should alert component type set to success (6 ms)
-    -   ✓ should alert component type set to warning (11 ms)
-
-`[PASS] src/screens/Page404/Page404.spec.tsx`
-
--   Page 404 Screen
-    -   ✓ should render page 404 screen without any error (28 ms)
-    -   ✓ should display the page not found error message (7 ms)
-
-`[PASS] src/features/FavoriteStocks/ListContainer/List/EmptyState/EmptyState.spec.tsx`
-
--   Empty State Contianer Component
-    -   ✓ should render empty state component without any error (26 ms)
-
-`[PASS] src/common/components/MenuItems/MenuItems.spec.tsx`
-
--   MenuItems Common Component
-    -   ✓ should render menu items component (36 ms)
-    -   ✓ should menu items component display items (11 ms)
-
-`[PASS] src/common/components/WithAnimation/WithAnimation.spec.tsx`
-
--   WithAnimation Common Component
-    -   ✓ should render component without any error (30 ms)
-    -   ✓ should hide itself if isShow is false (3 ms)
-    -   ✓ should display children as its content (8 ms)
-
-`[PASS] src/common/FetchIEX/FetchIEX.spec.tsx`
-
--   FetchIEX Common API Method
-    -   ✓ should make fetch request (20 ms)
-    -   ✓ should return error properly (8 ms)
-
-`[PASS] src/features/Footer/Footer.spec.tsx`
-
--   Footer Component
-    -   ✓ should render footer component without any error (37 ms)
-
-`[PASS] src/features/FavoriteStocks/ListContainer/List/ShimmerLoading/ShimmerLoading.spec.tsx`
-
--   List Shimmer Component
-    -   ✓ should render shimmer loading component without any error (23 ms)
-
-`[PASS] src/common/components/Icons/Icons.spec.tsx`
-
--   Icons Common Component
-    -   ✓ should render icons component (22 ms)
-    -   ✓ should icon component display icons (3 ms)
-
-`[PASS] src/common/utils/utils.spec.tsx`
-
--   Utils (helper methods)
-    -   ✓ should return null for getUserStateFromLocalStorage on initial user visit (2 ms)
-    -   ✓ should getUserStateFromLocalStorage and setUserStateToLocalStorage work as expected (1 ms)
-    -   ✓ should currenyFormatter properly format currencies (1 ms)
-    -   ✓ should percentageFormatter properly format percentage
-
-`[PASS] src/features/FavoriteStocks/FavoriteStocksSlice.spec.ts`
+`[PASS] - src/features/FavoriteStocks/FavoriteStocksSlice.spec.ts`
 
 -   FavoriteStocks reducer
-    -   ✓ should handle initial state (2 ms)
-    -   ✓ should handle add item to quotes (1 ms)
+    -   ✓ should handle initial state (3 ms)
+    -   ✓ should handle add item to quotes (2 ms)
     -   ✓ should handle remove item from quotes
 
-`[PASS] src/common/components/Shimmer/Shimmer.spec.tsx`
+`[PASS] - src/features/FavoriteStocks/Search/Search.spec.tsx`
 
--   Shimmer Common Component
-    -   ✓ should render shimmer component (18 ms)
+-   Favorite Stocks Search Component
+    -   ✓ should render search component without any error (36 ms)
+    -   ✓ should search input have empty value by default (7 ms)
+    -   ✓ should display the type value in the input (10 ms)
+    -   ✓ should trigger search after typing more than 2 letters and open dropdown (6 ms)
 
-`[PASS] src/features/FavoriteStocks/Search/Dropdown/ShimmerLoading/ShimmerLoading.spec.tsx`
+`[PASS] - src/features/FavoriteStocks/Search/Dropdown/Dropdown.spec.tsx`
 
--   Dropdown Shimmer Component
-    -   ✓ should render shimmer loading component without any error (20 ms)
+-   Dropdown Component
+    -   ✓ should render dropdown component without any error (37 ms)
+    -   ✓ should make the search based on the keyword provided and display the results (87 ms)
+    -   ✓ should display error if nothing is found (28 ms)
+    -   ✓ should clicking the button triggeres addStockToFavCallback callbackk (35 ms)
+    -   ✓ should clicking the button add company to state (42 ms)
+
+`[PASS] - src/features/FavoriteStocks/Search/SearchAPI.spec.tsx`
+
+-   Fetch Search Api
+    -   ✓ should fetch search as expected (23 ms)
+    -   ✓ should fetch search handle error (7 ms)
 
 `[PASS] - src/features/FavoriteStocks/Search/SearchSlice.spec.tsx`
 
 -   Search reducer
-    -   ✓ should handle initial state (2 ms)
+    -   ✓ should handle initial state (4 ms)
+
+`[PASS] - src/features/FavoriteStocks/Search/Dropdown/ShimmerLoading/ShimmerLoading.spec.tsx`
+
+-   Dropdown Shimmer Component
+    -   ✓ should render shimmer loading component without any error (22 ms)
+
+`[PASS] - src/features/FavoriteStocks/CompanyDetails/CompanyDetails.spec.tsx`
+
+-   Company Details Component
+    -   ✓ should display without any error and display all company details (95 ms)
+    -   ✓ should display error message if nothing is found (23 ms)
+    -   ✓ should display empty state if nothing is found (22 ms)
+
+`[PASS] - src/features/FavoriteStocks/ListContainer/ListContainer.spec.tsx`
+
+-   Favorite Stocks List Contianer Component
+    -   ✓ should render list container component without any error (25 ms)
+
+`[PASS] - src/features/FavoriteStocks/ListContainer/List/List.spec.tsx`
+
+-   Favorite Stocks List Component
+    -   ✓ should render stock list component without any error (76 ms)
+    -   ✓ should handle empty case (8 ms)
+    -   ✓ should handle error (21 ms)
+    -   ✓ should handle loading state (9 ms)
+    -   ✓ should display stocks in table-layout if it is default users list type (15 ms)
+    -   ✓ should display stocks in grid-layout if it is default users list type (13 ms)
+
+`[PASS] - src/features/FavoriteStocks/ListContainer/List/ShimmerLoading/ShimmerLoading.spec.tsx`
+
+-   List Shimmer Component
+    -   ✓ should render shimmer loading component without any error (23 ms)
+
+`[PASS] - src/features/FavoriteStocks/ListContainer/List/EmptyState/EmptyState.spec.tsx`
+
+-   Empty State Contianer Component
+    -   ✓ should render empty state component without any error (20 ms)
+
+`[PASS] - src/features/FavoriteStocks/ListContainer/List/TableLayout/TableLayout.spec.jsx`
+
+-   Table Layout Component
+    -   ✓ should render stocks in table without any error (61 ms)
+    -   ✓ should display all available stocks (14 ms)
+    -   ✓ should clicking remove button remove the stock (15 ms)
+    -   ✓ should clicking detail button open company details modal (14 ms)
+    -   ✓ should display company symbol, price, change properly in each row (18 ms)
+
+`[PASS] - src/features/FavoriteStocks/ListContainer/ListHeader/ListHeader.spec.tsx`
+
+-   Favorite Stocks List Header Component
+    -   ✓ should render header component without any error (25 ms)
+    -   ✓ should render the title (13 ms)
+    -   ✓ should render the listing type toggle buttons (8 ms)
+    -   ✓ should table list type button is activated by default (7 ms)
+    -   ✓ should clicking the inactive button switch the global listing type (13 ms)
+
+`[PASS] - src/features/FavoriteStocks/ListContainer/List/GridLayout/GridLayout.spec.tsx`
+
+-   Grid Layout Component
+    -   ✓ should render stocks in table without any error (56 ms)
+    -   ✓ should display all available stocks (15 ms)
+    -   ✓ should clicking remove button remove the stock (15 ms)
+    -   ✓ should clicking detail button open company details modal (15 ms)
+    -   ✓ should display company symbol, price, change properly in each row (19 ms)
+
+`[PASS] - src/features/Footer/Footer.spec.tsx`
+
+-   Footer Component
+    -   ✓ should render footer component without any error (27 ms)
+
+`[PASS] - src/features/Header/Header.spec.tsx`
+
+-   Header Component
+    -   ✓ should render header component without any error (58 ms)
+    -   ✓ should display slogan in the header (13 ms)
+    -   ✓ should display logo in the header (10 ms)
+    -   ✓ should render themeSwitcher component (10 ms)
+    -   ✓ should render menuItems component (13 ms)
+
+`[PASS] - src/screens/Homepage/Homepage.spec.tsx`
+
+-   Homepage Screen
+    -   ✓ should render homepage screen without any error (55 ms)
+
+`[PASS] - src/screens/Page404/Page404.spec.tsx`
+
+-   Page 404 Screen
+    -   ✓ should render page 404 screen without any error (30 ms)
+    -   ✓ should display the page not found error message (6 ms)
+
+`[PASS] - src/screens/UIKit/UIKit.spec.tsx`
+
+-   UIKit Screen
+    -   ✓ should render uikit screen without any error (251 ms)
+
+`[PASS] - src/common/components/Modal/Modal.spec.tsx`
+
+-   Modal Common Component
+    -   ✓ should render modal component (43 ms)
+    -   ✓ should modal component display content inside the modal (14 ms)
+    -   ✓ should modal component refrelect max-width prop (37 ms)
+    -   ✓ should modal component reflects title prop (8 ms)
+    -   ✓ should trigger closeHandler upon clicking the close button (13 ms)
+
+`[PASS] - src/common/components/ThemeSwitcher/ThemeSwitcher.spec.tsx`
+
+-   ThemeSwitcher Common Component
+    -   ✓ should render percentage component (27 ms)
+    -   ✓ should not be checked if theme is light (from the redux store) (5 ms)
+    -   ✓ should be checked if theme is dark (from the redux store) (6 ms)
+    -   ✓ should toggle the theme upon clicking (15 ms)
+
+`[PASS] - src/common/components/Shimmer/ShimmerItem.spec.tsx`
+
+-   Shimmer Common Component
+    -   ✓ should render shimmer items component (27 ms)
+    -   ✓ should reflect the className prop to shimmer items properly (4 ms)
+    -   ✓ should reflect the marginBottom prop to shimmer items properly (31 ms)
+    -   ✓ should reflect the height prop to shimmer items properly (10 ms)
+    -   ✓ should reflect the width prop to shimmer items properly (6 ms)
+
+`[PASS] - src/common/components/Percentage/Percentage.spec.tsx`
+
+-   Percentage Common Component
+    -   ✓ should render percentage component (26 ms)
+    -   ✓ should format percentage properly based on the changed percentage (6 ms)
+-   Change percentage is negative
+    -   ✓ should display text as green (6 ms)
+    -   ✓ should display up icon (5 ms)
+    -   ✓ should display text as red (5 ms)
+    -   ✓ should display down icon (4 ms)
+
+`[PASS] - src/common/components/WithAnimation/WithAnimation.spec.tsx`
+
+-   WithAnimation Common Component
+    -   ✓ should render component without any error (26 ms)
+    -   ✓ should hide itself if isShow is false (4 ms)
+    -   ✓ should display children as its content (12 ms)
+
+`[PASS] - src/common/components/MenuItems/MenuItems.spec.tsx`
+
+-   MenuItems Common Component
+    -   ✓ should render menu items component (29 ms)
+    -   ✓ should menu items component display items (7 ms)
+
+`[PASS] - src/common/components/Alert/Alert.spec.tsx`
+
+-   Alert Common Component
+    -   ✓ should render alert component (26 ms)
+    -   ✓ should alert component display message prop (4 ms)
+    -   ✓ should alert component type set to error (5 ms)
+    -   ✓ should alert component type set to info (5 ms)
+    -   ✓ should alert component type set to success (5 ms)
+    -   ✓ should alert component type set to warning (4 ms)
+
+`[PASS] - src/common/utils/utils.spec.tsx`
+
+-   Utils (helper methods)
+    -   ✓ should return null for getUserStateFromLocalStorage on initial user visit (2 ms)
+    -   ✓ should getUserStateFromLocalStorage and setUserStateToLocalStorage work as expected (1 ms)
+    -   ✓ should currenyFormatter properly format currencies (16 ms)
+    -   ✓ should percentageFormatter properly format percentage (1 ms)
+
+`[PASS] - src/common/FetchIEX/FetchIEX.spec.tsx`
+
+-   FetchIEX Common API Method
+    -   ✓ should make fetch request (13 ms)
+    -   ✓ should return error properly (6 ms)
+
+`[PASS] - src/common/components/Icons/Icons.spec.tsx`
+
+-   Icons Common Component
+    -   ✓ should render icons component (19 ms)
+    -   ✓ should icon component display icons (3 ms)
+
+`[PASS] - src/common/components/Shimmer/Shimmer.spec.tsx`
+
+-   Shimmer Common Component
+    -   ✓ should render shimmer component (21 ms)
 
 ---
 
