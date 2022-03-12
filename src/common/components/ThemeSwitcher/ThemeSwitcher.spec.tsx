@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import { render } from '../../../app/testWrapper';
 import ThemeSwitcher from './index';
 
@@ -19,14 +19,27 @@ describe('ThemeSwitcher Common Component', () => {
         });
         expect(screen.getByTestId('theme-switcher-input')).not.toBeChecked();
     });
-    // it('should be checked if theme is dark (from the redux store)', () => {
-    //     render(<ThemeSwitcher />, {
-    //         preloadedState: {
-    //             user: {
-    //                 theme: 'dark',
-    //             },
-    //         },
-    //     });
-    //     expect(screen.getByTestId('theme-switcher-input')).toBeChecked();
-    // });
+    it('should be checked if theme is dark (from the redux store)', () => {
+        render(<ThemeSwitcher />, {
+            preloadedState: {
+                user: {
+                    theme: 'dark',
+                },
+            },
+        });
+        expect(screen.getByTestId('theme-switcher-input')).toBeChecked();
+    });
+    it('should toggle the theme upon clicking', () => {
+        render(<ThemeSwitcher />, {
+            preloadedState: {
+                user: {
+                    theme: 'dark',
+                },
+            },
+        });
+        expect(screen.getByTestId('theme-switcher-input')).toBeChecked();
+        const btn = screen.getByTestId('theme-switcher');
+        fireEvent.click(btn);
+        expect(screen.getByTestId('theme-switcher-input')).not.toBeChecked();
+    });
 });
