@@ -8,7 +8,7 @@ Live Demo: https://mustafa-cakir-bux-zero.firebaseapp.com
 
 ### State Management
 
--   `Redux` has been used to manage the global-level or screen-level states
+-   `redux` has been used to manage the global-level or screen-level states
 -   `useState` has been used in various components to keep the state closer to where is actually being used
 
 ---
@@ -21,7 +21,9 @@ Live Demo: https://mustafa-cakir-bux-zero.firebaseapp.com
 -   `src/assets` Static assets like images, files, icons are placed in the assets' directory (global stylesheet, mixins, colors and custom UI-kit)
 -   `src/screens` Includes the screen container of the page/routes
 
-fyi: The `feature folder structure` is recommended by the [Redux style guide](#https://redux.js.org/style-guide/style-guide#structure-files-as-feature-folders-with-single-file-logic). By using Redux Toolkit, We have avoided boilerplate code like actions and reducers.
+fyi: The `feature folder structure` is recommended by the [Redux style guide](#https://redux.js.org/style-guide/style-guide#structure-files-as-feature-folders-with-single-file-logic). By using Redux Toolkit, it is now possible to avoid boilerplate code like actions and reducers.
+
+---
 
 ### How It Works:
 
@@ -42,34 +44,223 @@ fyi: The `feature folder structure` is recommended by the [Redux style guide](#h
 -   If user clicks the detail button from the favorite stocks list, the company detail modal is displayed. This component fetch the company data from `/stock/{symbol}/company` endpoint.
 -   Github actions are defined, and firebase configurations are completed. CI/CD is fully applied to poject. Once a commit is pushed to `main` branch, app automatically get build and deployed to firebase (URL: https://mustafa-cakir-bux-zero.firebaseapp.com)
 
+---
+
 ### Tests
 
 -   npm package `msw` has been used to mock the API requests
 -   React Testing Library has been used to run the unit and integration tests
 
-### Test cases
+---
 
--   Helper Methods / Unit Tests
-    -   should `getFavStocksFromLocalStorage` method properly retrieve list from the localStorage
-    -   should `setFavStocksToLocalStorage` method properly save the fav-lists to the localStore
--   Root Component
-    -   should app get rendered correctly without any error
--   Search Component
-    -   should component render correctly
-    -   should init searching only after 2 character is typed
-    -   should handle empty state properly
-    -   should handle API fetch error propely
-    -   should clearing the input hide the dropdown
-    -   should dropdown display the found stock properly
-    -   should dropdown display the found stock's fav-icon state property (filled if already in the list, empty if not in the list)
-    -   should clicking the stock add the stock to user's fav-list
--   Listing Stocks Component
-    -   should component render correctly
-    -   should handle empty state properly
-    -   should handle API fetch error propely
-    -   should clicking the remove button successfully remove the stock from the fav-list
-    -   should list the fav-list in a table, properly (with company name, current stock price etc.)
-    -   should clicking a stock name display the details of the stock
+### Test Summary
+
+    Test Suites: 29 passed, 29 total
+    Tests:       80 passed, 80 total
+    Snapshots:   0 total
+    Time:        3.579 s
+
+---
+
+### Test Cases
+
+-   `[PASS] src/common/components/Shimmer/ShimmerItem.spec.tsx`
+-   Shimmer Common Component
+    -   ✓ should render shimmer items component (39 ms)
+    -   ✓ should reflect the className prop to shimmer items properly (6 ms)
+    -   ✓ should reflect the marginBottom prop to shimmer items properly (41 ms)
+    -   ✓ should reflect the height prop to shimmer items properly (12 ms)
+    -   ✓ should reflect the width prop to shimmer items properly (11 ms)
+
+`[PASS] src/common/components/Modal/Modal.spec.tsx`
+
+-   Modal Common Component
+    -   ✓ should render modal component (46 ms)
+    -   ✓ should modal component display content inside the modal (11 ms)
+    -   ✓ should modal component refrelect max-width prop (41 ms)
+    -   ✓ should modal component reflects title prop (9 ms)
+    -   ✓ should trigger closeHandler upon clicking the close button (19 ms)
+
+`[PASS] src/features/Header/Header.spec.tsx`
+
+-   Header Component
+    -   ✓ should render header component without any error (58 ms)
+    -   ✓ should display slogan in the header (14 ms)
+    -   ✓ should display logo in the header (13 ms)
+    -   ✓ should render themeSwitcher component (14 ms)
+    -   ✓ should render menuItems component (28 ms)
+
+`[PASS] src/screens/Homepage/Homepage.spec.tsx`
+
+-   Homepage Screen
+    -   ✓ should render homepage screen without any error (80 ms)
+
+`[PASS] src/app/App.spec.tsx`
+
+-   App
+    -   ✓ should render app without any error (103 ms)
+
+`[PASS] src/screens/UIKit/UIKit.spec.tsx`
+
+-   UIKit Screen
+    -   ✓ should render uikit screen without any error (305 ms)
+
+`[PASS] src/features/FavoriteStocks/CompanyDetails/CompanyDetails.spec.tsx`
+
+-   Company Details Component
+    -   ✓ should display without any error and display all company details (104 ms)
+    -   ✓ should display error message if nothing is found (24 ms)
+    -   ✓ should display empty state if nothing is found (26 ms)
+
+`[PASS] src/features/FavoriteStocks/Search/Dropdown/Dropdown.spec.tsx`
+
+-   Dropdown Component
+    -   ✓ should render dropdown component without any error (36 ms)
+    -   ✓ should make the search based on the keyword provided and display the results (80 ms)
+    -   ✓ should display error if nothing is found (33 ms)
+    -   ✓ should clicking the button triggeres addStockToFavCallback callbackk (67 ms)
+    -   ✓ should clicking the button add company to state (46 ms)
+
+`[PASS] src/common/components/Percentage/Percentage.spec.tsx`
+
+-   Percentage Common Component
+    -   ✓ should render percentage component (43 ms)
+    -   ✓ should format percentage properly based on the changed percentage (6 ms)
+-   Change percentage is negative
+    -   ✓ should display text as green (6 ms)
+    -   ✓ should display up icon (4 ms)
+    -   ✓ should display text as red (4 ms)
+    -   ✓ should display down icon (3 ms)
+
+`[PASS] src/features/FavoriteStocks/ListContainer/ListHeader/ListHeader.spec.tsx`
+
+-   Favorite Stocks List Header Component
+    -   ✓ should render header component without any error (29 ms)
+    -   ✓ should render the title (8 ms)
+    -   ✓ should render the listing type toggle buttons (7 ms)
+    -   ✓ should table list type button is activated by default (5 ms)
+    -   ✓ should clicking the inactive button switch the global listing type (15 ms)
+
+`[PASS] src/features/FavoriteStocks/FavoriteStocksAPI.spec.ts`
+
+-   Favorite Stocks Api
+    -   ✓ should fetch quote (23 ms)
+    -   ✓ should fetch multiple quotes on initial load (8 ms)
+
+`[PASS] src/features/FavoriteStocks/ListContainer/ListContainer.spec.tsx`
+
+-   Favorite Stocks List Contianer Component
+    -   ✓ should render list container component without any error (27 ms)
+
+`[PASS] src/features/FavoriteStocks/Search/Search.spec.tsx`
+
+-   Favorite Stocks Search Component
+    -   ✓ should render search component without any error (31 ms)
+    -   ✓ should search input have empty value by default (5 ms)
+    -   ✓ should display the type value in the input (17 ms)
+    -   ✓ should trigger search after typing more than 2 letters and open dropdown (5 ms)
+
+`[PASS] src/features/FavoriteStocks/Search/SearchAPI.spec.tsx`
+
+-   Fetch Search Api
+    -   ✓ should fetch search as expected (26 ms)
+    -   ✓ should fetch search handle error (7 ms)
+
+`[PASS] src/common/components/ThemeSwitcher/ThemeSwitcher.spec.tsx`
+
+-   ThemeSwitcher Common Component
+    -   ✓ should render percentage component (32 ms)
+    -   ✓ should not be checked if theme is light (from the redux store) (6 ms)
+    -   ✓ should be checked if theme is dark (from the redux store) (4 ms)
+    -   ✓ should toggle the theme upon clicking (20 ms)
+
+`[PASS] src/common/components/Alert/Alert.spec.tsx`
+
+-   Alert Common Component
+    -   ✓ should render alert component (28 ms)
+    -   ✓ should alert component display message prop (6 ms)
+    -   ✓ should alert component type set to error (7 ms)
+    -   ✓ should alert component type set to info (6 ms)
+    -   ✓ should alert component type set to success (6 ms)
+    -   ✓ should alert component type set to warning (11 ms)
+
+`[PASS] src/screens/Page404/Page404.spec.tsx`
+
+-   Page 404 Screen
+    -   ✓ should render page 404 screen without any error (28 ms)
+    -   ✓ should display the page not found error message (7 ms)
+
+`[PASS] src/features/FavoriteStocks/ListContainer/List/EmptyState/EmptyState.spec.tsx`
+
+-   Empty State Contianer Component
+    -   ✓ should render empty state component without any error (26 ms)
+
+`[PASS] src/common/components/MenuItems/MenuItems.spec.tsx`
+
+-   MenuItems Common Component
+    -   ✓ should render menu items component (36 ms)
+    -   ✓ should menu items component display items (11 ms)
+
+`[PASS] src/common/components/WithAnimation/WithAnimation.spec.tsx`
+
+-   WithAnimation Common Component
+    -   ✓ should render component without any error (30 ms)
+    -   ✓ should hide itself if isShow is false (3 ms)
+    -   ✓ should display children as its content (8 ms)
+
+`[PASS] src/common/FetchIEX/FetchIEX.spec.tsx`
+
+-   FetchIEX Common API Method
+    -   ✓ should make fetch request (20 ms)
+    -   ✓ should return error properly (8 ms)
+
+`[PASS] src/features/Footer/Footer.spec.tsx`
+
+-   Footer Component
+    -   ✓ should render footer component without any error (37 ms)
+
+`[PASS] src/features/FavoriteStocks/ListContainer/List/ShimmerLoading/ShimmerLoading.spec.tsx`
+
+-   List Shimmer Component
+    -   ✓ should render shimmer loading component without any error (23 ms)
+
+`[PASS] src/common/components/Icons/Icons.spec.tsx`
+
+-   Icons Common Component
+    -   ✓ should render icons component (22 ms)
+    -   ✓ should icon component display icons (3 ms)
+
+`[PASS] src/common/utils/utils.spec.tsx`
+
+-   Utils (helper methods)
+    -   ✓ should return null for getUserStateFromLocalStorage on initial user visit (2 ms)
+    -   ✓ should getUserStateFromLocalStorage and setUserStateToLocalStorage work as expected (1 ms)
+    -   ✓ should currenyFormatter properly format currencies (1 ms)
+    -   ✓ should percentageFormatter properly format percentage
+
+`[PASS] src/features/FavoriteStocks/FavoriteStocksSlice.spec.ts`
+
+-   FavoriteStocks reducer
+    -   ✓ should handle initial state (2 ms)
+    -   ✓ should handle add item to quotes (1 ms)
+    -   ✓ should handle remove item from quotes
+
+`[PASS] src/common/components/Shimmer/Shimmer.spec.tsx`
+
+-   Shimmer Common Component
+    -   ✓ should render shimmer component (18 ms)
+
+`[PASS] src/features/FavoriteStocks/Search/Dropdown/ShimmerLoading/ShimmerLoading.spec.tsx`
+
+-   Dropdown Shimmer Component
+    -   ✓ should render shimmer loading component without any error (20 ms)
+
+`[PASS] - src/features/FavoriteStocks/Search/SearchSlice.spec.tsx`
+
+-   Search reducer
+    -   ✓ should handle initial state (2 ms)
+
+---
 
 ### TODO's
 
@@ -77,24 +268,41 @@ fyi: The `feature folder structure` is recommended by the [Redux style guide](#h
 -   User's favorite stocks are stored in the localStorage for persistency, this approach should be carried to user profile endpoint.
 -   On initial load; user's previous favorite stocks are taken from localstorage as `['AAPL', 'GOOGLE']` and each of symbole are re-fetched from `/stock/{symbol}/quote` one by one, as the request(s) are resolved, they are appended to `redux.favoriteStocks.quote` as "first-come-first-serve", hence the order of the fav-list might be different on each page refresh. Ideally, single endpoint shoould be used to fetch-multi stock quotes at a time, the response should be in the given sorting.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### Getting Started
 
-### `npm start`
+1. Make sure you have a fresh version of [Node.js](https://nodejs.org/en/) and [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) installed.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. Clone this repository to your computer:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+    ```sh
+    git clone git@github.com:mustafa-cakir/cra-finance.git
+    ```
 
-### `npm test`
+3. From the project's root directory, install the required packages (dependencies):
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```sh
+    yarn install
+    ```
 
-### `npm run build`
+4. To run the app on your local machine (http://localhost:3000):
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```sh
+    # it will start a server instance on port 3000
+    yarn start
+    ```
+
+5. To run the test watcher in an interactive mode:
+
+    ```sh
+    # By default, runs tests related to files changed since the last commit.
+    yarn test
+    ```
+
+6. To build the app:
+
+    ```sh
+    # it will place all files needed for deployment into the /build directory
+    yarn build
+    ```
