@@ -1,40 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IQuote } from '../../../../../app/types';
 import { currenyFormatter } from '../../../../../common/utils';
 import Percentage from '../../../../../common/components/Percentage';
 import Icons from '../../../../../common/components/Icons';
-import { useAppDispatch, useAppSelector } from '../../../../../common/hooks';
-import { removeItemFromQuotes } from '../../../FavoriteStocksSlice';
-import { removeItemFromFavStocks } from '../../../../../app/slices/userSlice';
+import { useAppSelector } from '../../../../../common/hooks';
 import './Style.scss';
-import Modal from '../../../../../common/components/Modal';
-import CompanyDetails from '../../../CompanyDetails';
 
-const TableLayout = () => {
-    const [openCompanyDetailBySymbol, setOpenCompanyDetailBySymbol] = useState('');
-    const dispatch = useAppDispatch();
+type Prop = {
+    removeStockHandler: (favStock: string) => void;
+    openCompanyDetailModalHandler: (symbol: string) => void;
+};
+
+const TableLayout = ({ removeStockHandler, openCompanyDetailModalHandler }: Prop) => {
     const { quotes } = useAppSelector(redux => redux.favoriteStocks);
-
-    const removeStockHandler = (favStock: string) => {
-        dispatch(removeItemFromQuotes(favStock));
-        dispatch(removeItemFromFavStocks(favStock));
-    };
-
-    const setOpenDetailBySymbolClickHandler = (symbol: string) => {
-        setOpenCompanyDetailBySymbol(openCompanyDetailBySymbol === symbol ? '' : symbol); // toggle or set
-    };
-
-    const closeCompanyDetailModalHandler = () => {
-        setOpenCompanyDetailBySymbol('');
-    };
-
     return (
         <div className="favorite-stocks-list-table" data-testid="favorite-stocks-list-table">
-            {openCompanyDetailBySymbol && (
-                <Modal closeHandler={closeCompanyDetailModalHandler}>
-                    <CompanyDetails symbol={openCompanyDetailBySymbol} />
-                </Modal>
-            )}
             <div className="favorite-stocks-list-table-inner">
                 <table>
                     <thead>
@@ -56,7 +36,7 @@ const TableLayout = () => {
                                     <td>{companyName}</td>
                                     <td>
                                         <button
-                                            onClick={() => setOpenDetailBySymbolClickHandler(symbol)}
+                                            onClick={() => openCompanyDetailModalHandler(symbol)}
                                             className="ui-read-more-btn"
                                             type="button"
                                         >
