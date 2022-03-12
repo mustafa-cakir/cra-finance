@@ -7,7 +7,7 @@ const Page404 = () => {
     }, []);
 
     return (
-        <div className="page-404">
+        <div className="page-404" data-testid="page-404">
             <div className="container">
                 <div className="page-404-inner">
                     <div>

@@ -10,7 +10,7 @@ import { useAppSelector } from '../common/hooks';
 const App = () => {
     const { theme } = useAppSelector(redux => redux.user);
     return (
-        <div className={`app theme-${theme}`}>
+        <div className={`app theme-${theme}`} data-testid="app">
             <BrowserRouter>
                 <ErrorBoundary>
                     <Header />

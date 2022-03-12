@@ -13,7 +13,7 @@ const UIKit = () => {
     const [isWithAnimation, setIsWithAnimation] = useState(false);
 
     return (
-        <div className="ui-kit-page">
+        <div className="ui-kit-page" data-testid="ui-kit">
             <div className="container">
                 <div className="ui-box ui-mb-30">
                     <h2>Typography</h2>

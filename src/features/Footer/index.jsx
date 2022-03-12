@@ -4,7 +4,7 @@ import './Style.scss';
 
 const Footer = () => {
     return (
-        <footer className="footer">
+        <footer className="footer" data-testid="footer">
             <div className="container">
                 <h3>Footer Links</h3>
                 <MenuItems />

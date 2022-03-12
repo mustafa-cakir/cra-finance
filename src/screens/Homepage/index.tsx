@@ -7,7 +7,7 @@ const Homepage = () => {
     }, []);
 
     return (
-        <div className="container ui-min-h-500">
+        <div className="container ui-min-h-500" data-testid="homepage">
             <FavoriteStocks />
         </div>
     );

@@ -19,6 +19,7 @@ const WithAnimaation = ({ isShow, children }: Props) => {
 
     return isRender ? (
         <div
+            data-testid="with-animation"
             className="withanimation"
             style={{ animation: isShow ? 'fadeInFromTop .3s' : 'fadeOutFromTop .3s' }}
             onAnimationEnd={onAnimationEnd}

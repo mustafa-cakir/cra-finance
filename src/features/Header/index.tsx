@@ -8,7 +8,7 @@ import MenuItems from '../../common/components/MenuItems';
 
 const Header = () => {
     return (
-        <header className="header">
+        <header className="header" data-testid="header">
             <div className="header-bg" />
             <div className="header-bg-curve" />
             <div className="header-content">
@@ -16,10 +16,12 @@ const Header = () => {
                     <div className="header-inner">
                         <div className="header-inner-left">
                             <Link to={URL_HOMEPAGE}>
-                                <img src={logo} className="header-logo" alt="logo" />
+                                <img src={logo} className="header-logo" alt="logo" data-testid="header-logo" />
                             </Link>
                             <div className="header-separator" />
-                            <h2 className="header-slogan">Stocks</h2>
+                            <h2 className="header-slogan" data-testid="header-slogan">
+                                Stocks
+                            </h2>
                         </div>
                         <div className="header-inner-right">
                             <ThemeSwitcher />
