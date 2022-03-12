@@ -211,8 +211,7 @@
 
             @for $i from 0 through 30 {
                 @if $i % 5 == 0 {
-                    // padding: bottom/top/left/right 5px, 10px, 15px, 20px, 25px, 30px
-                    // margin: bottom/top/left/right 5px, 10px, 15px, 20px, 25px, 30px
+                    // margin: bottom/top => 5px, 10px, 15px, 20px, 25px, 30px
                     // infix support:
                     // ui-mb-5 => {all} screens will have margin-bottom: 5px;
                     // ui-mb-lg-5 => {lg} and up will have margin-bottom: 5px;
@@ -223,72 +222,14 @@
                     &-mt#{$infix}-#{$i} {
                         margin-top: #{$i}px;
                     }
-                    &-ml#{$infix}-#{$i} {
-                        margin-left: #{$i}px;
-                    }
-                    &-mr#{$infix}-#{$i} {
-                        margin-right: #{$i}px;
-                    }
-                    &-pb#{$infix}-#{$i} {
-                        padding-bottom: #{$i}px;
-                    }
-                    &-pt#{$infix}-#{$i} {
-                        padding-top: #{$i}px;
-                    }
-                    &-pl#{$infix}-#{$i} {
-                        padding-left: #{$i}px;
-                    }
-                    &-pr#{$infix}-#{$i} {
-                        padding-right: #{$i}px;
-                    }
                 }
             }
 
             &-text#{$infix} {
-                &-size {
-                    &-8 {
-                        font-size: 8px;
-                    }
-                    &-10 {
-                        font-size: 10px;
-                    }
-                    &-11 {
-                        font-size: 11px;
-                    }
-                    &-12 {
-                        font-size: 12px;
-                    }
-                    &-14 {
-                        font-size: 14px;
-                    }
-                    &-16 {
-                        font-size: 16px;
-                    }
-                    &-18 {
-                        font-size: 18px;
-                    }
-                    &-20 {
-                        font-size: 20px;
-                    }
-                    &-24 {
-                        font-size: 24px;
-                    }
-                    &-32 {
-                        font-size: 32px;
-                    }
-                    &-36 {
-                        font-size: 36px;
-                    }
-                    &-40 {
-                        font-size: 40px;
-                        line-height: 1;
-                    }
-                    &-50 {
-                        font-size: 50px;
-                        line-height: 1;
-                    }
-                }
-                // text-align
+	            // text-align: left/right/center
+	            // infix support:
+	            // ui-text-right => {all} screens will have text-align: right;
+	            // ui-text-lg-right => {lg} and up will have text-align: right;
                 &-left {
                     text-align: left;
                 }
@@ -298,28 +239,16 @@
                 &-center {
                     text-align: center;
                 }
-                // font weight
-                &-weight-bold {
-                    font-weight: 900;
-                }
-                &-weight-normal {
-                    font-weight: 400;
-                }
             }
 
             @for $i from 1 through 500 {
-                @if $i % 5 == 0 {
-                    // width, min-width, max-width for 5px, 10px....495px, 500px
+                @if $i % 50 == 0 {
+                    // width, min-width, max-width for 50px, 100px....450px, 500px
                     // height, min-height, max-height for 5px, 10px....495px, 500px
                     // flex for 5px, 10px....495px, 500px
                     // Supports breakpoint infix
                     // ui-w-50 => {all} screens will have width: 50px;
                     // ui-lg-w-50 => {lg} and up will have width: 50px;
-
-                    &#{$infix}-flex-#{$i} {
-                        flex: 0 0 #{$i}px;
-                        max-width: #{$i}px;
-                    }
 
                     &#{$infix}-w-#{$i} {
                         width: #{$i}px;

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IFavoriteStocks, IFavStockItem, IQuote } from '../../app/types';
+import { IFavoriteStocks, IQuote } from '../../app/types';
 import { fetchQuote } from './FavoriteStocksAPI';
 
 const initialState: IFavoriteStocks = {

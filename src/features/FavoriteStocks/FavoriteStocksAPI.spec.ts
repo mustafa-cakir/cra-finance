@@ -1,6 +1,6 @@
 import { IUser } from '../../app/types';
 import { fetchQuote, fetchQuotesOnInit } from './FavoriteStocksAPI';
-import { makeStore, store } from '../../app/store';
+import { makeStore } from '../../app/store';
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
 import { IEX_BASE_DOMAIN } from '../../common/constants/apis';

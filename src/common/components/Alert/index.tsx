@@ -26,7 +26,7 @@ const Alert = ({ type, message }: Props) => {
 
     return (
         <div className={`alert type-${type}`} data-testid="alert">
-            <Icons name={iconName} customClassName="ui-text-size-20 mr-2dot5" />
+            <Icons name={iconName} />
             <div className="message" data-testid="alert-message">
                 {message}
             </div>
