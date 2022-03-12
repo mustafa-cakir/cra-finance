@@ -11,8 +11,8 @@ const Percentage = ({ changePercent }: Prop) => {
     if (!changePercent) return null;
     const isUp = changePercent > 0;
     return (
-        <div className={`percentage ${isUp ? 'is-up' : 'is-down'}`}>
-            <span>{percentageFormatter(changePercent)}</span>
+        <div className={`percentage ${isUp ? 'is-up' : 'is-down'}`} data-testid="percentage">
+            <span data-testid="percentage-text">{percentageFormatter(changePercent)}</span>
             <Icons name={isUp ? 'arrow-up' : 'arrow-down'} />
         </div>
     );

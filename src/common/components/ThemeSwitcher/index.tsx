@@ -12,9 +12,15 @@ const ThemeSwitcher = () => {
     };
 
     return (
-        <label className="theme-switcher">
+        <label className="theme-switcher" data-testid="theme-switcher">
             <div className="theme-switcher-icon">
-                <input type="checkbox" onChange={toggleHandler} id="theme-switcher" checked={theme === 'dark'} />
+                <input
+                    type="checkbox"
+                    onChange={toggleHandler}
+                    id="theme-switcher"
+                    checked={theme === 'dark'}
+                    data-testid="theme-switcher-input"
+                />
                 <span className="pin" />
             </div>
             <div className="theme-switcher-text">Dark Mode</div>

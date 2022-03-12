@@ -7,7 +7,7 @@ type Props = {
 
 const Icons = ({ name, customClassName }: Props) => {
     if (!name) return null;
-    return <i className={`icons icons-${name} ${customClassName || ''}`} />;
+    return <i className={`icons icons-${name} ${customClassName || ''}`} data-testid="icons" />;
 };
 
 Icons.defaultProps = {

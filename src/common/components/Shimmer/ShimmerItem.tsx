@@ -8,7 +8,13 @@ type Prop = {
 };
 
 const ShimmerItem = ({ height, width, marginBottom, className }: Prop) => {
-    return <div className={`shimmer-item ${className || ''}`} style={{ width, height, marginBottom }} />;
+    return (
+        <div
+            className={`shimmer-item ${className || ''}`}
+            style={{ width, height, marginBottom }}
+            data-testid="shimmer-item"
+        />
+    );
 };
 
 ShimmerItem.defaultProps = {

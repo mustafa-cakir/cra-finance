@@ -4,7 +4,7 @@ import { URL_HOMEPAGE, URL_UIKIT } from '../../constants';
 
 const MenuItems = () => {
     return (
-        <ul>
+        <ul data-testid="menu-items">
             <li>
                 <NavLink to={URL_HOMEPAGE} className="ui-link">
                     Homepage
