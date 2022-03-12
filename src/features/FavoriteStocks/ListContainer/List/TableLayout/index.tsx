@@ -31,7 +31,7 @@ const TableLayout = ({ removeStockHandler, openCompanyDetailModalHandler }: Prop
                         {quotes?.map((quote: IQuote) => {
                             const { symbol, companyName, latestPrice, currency, changePercent } = quote || {};
                             return (
-                                <tr key={symbol}>
+                                <tr key={symbol} data-testid="favorite-stocks-list-table-item">
                                     <td>{symbol}</td>
                                     <td>{companyName}</td>
                                     <td>
@@ -39,16 +39,20 @@ const TableLayout = ({ removeStockHandler, openCompanyDetailModalHandler }: Prop
                                             onClick={() => openCompanyDetailModalHandler(symbol)}
                                             className="ui-read-more-btn"
                                             type="button"
+                                            data-testid="company-details-button"
                                         >
                                             Details <Icons name="chevron-right" />
                                         </button>
                                     </td>
-                                    <td className="ui-text-right">{currenyFormatter(latestPrice, currency)}</td>
-                                    <td className="ui-text-right">
+                                    <td className="ui-text-right" data-testid="favorite-stocks-list-table-price">
+                                        {currenyFormatter(latestPrice, currency)}
+                                    </td>
+                                    <td className="ui-text-right" data-testid="favorite-stocks-list-table-percentage">
                                         <Percentage changePercent={changePercent} />
                                     </td>
                                     <td className="ui-text-right">
                                         <button
+                                            data-testid="favorite-stocks-list-table-remove-btn"
                                             type="button"
                                             className="ui-icon-button"
                                             onClick={() => removeStockHandler(symbol)}

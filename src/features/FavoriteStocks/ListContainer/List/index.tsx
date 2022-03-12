@@ -33,7 +33,7 @@ const FavoriteStocksList = () => {
     if (quotes?.length === 0) return <EmptyState />;
 
     return (
-        <>
+        <div data-testid="favorite-stocks-list">
             {openCompanyDetailBySymbol && (
                 <Modal closeHandler={closeCompanyDetailModalHandler}>
                     <CompanyDetails symbol={openCompanyDetailBySymbol} />
@@ -56,7 +56,7 @@ const FavoriteStocksList = () => {
                     openCompanyDetailModalHandler={openCompanyDetailModalHandler}
                 />
             )}
-        </>
+        </div>
     );
 };
 

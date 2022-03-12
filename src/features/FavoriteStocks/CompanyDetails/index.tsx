@@ -30,7 +30,7 @@ const CompanyDetails = ({ symbol }: Prop) => {
     }, [symbol]);
 
     return (
-        <div className="company-details-modal-inner">
+        <div className="company-details-modal-inner" data-testid="company-details-modal">
             {error && <Alert type="error" message={error} />}
             {isLoading && (
                 <Shimmer>

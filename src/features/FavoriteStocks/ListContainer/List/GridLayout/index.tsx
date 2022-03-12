@@ -20,7 +20,7 @@ const GridLayout = ({ removeStockHandler, openCompanyDetailModalHandler }: Prop)
                 {quotes?.map((quote: IQuote) => {
                     const { symbol, companyName, latestPrice, currency, changePercent } = quote || {};
                     return (
-                        <div className="grid-col col-box" key={symbol}>
+                        <div className="grid-col col-box" key={symbol} data-testid="favorite-stocks-list-grid-item">
                             <div className="ui-box">
                                 <div className="favorite-stocks-list-grid-inner">
                                     <div className="symbol">{symbol}</div>
@@ -30,17 +30,21 @@ const GridLayout = ({ removeStockHandler, openCompanyDetailModalHandler }: Prop)
                                             onClick={() => openCompanyDetailModalHandler(symbol)}
                                             className="ui-read-more-btn ui-mt-5"
                                             type="button"
+                                            data-testid="company-details-button"
                                         >
                                             Details <Icons name="chevron-right" />
                                         </button>
                                     </div>
                                     <hr />
-                                    <div className="latest-price">{currenyFormatter(latestPrice, currency)}</div>
-                                    <div>
+                                    <div className="latest-price" data-testid="favorite-stocks-list-grid-price">
+                                        {currenyFormatter(latestPrice, currency)}
+                                    </div>
+                                    <div data-testid="favorite-stocks-list-grid-percentage">
                                         <span className="ui-text-muted">Change:</span>{' '}
                                         <Percentage changePercent={changePercent} />
                                     </div>
                                     <button
+                                        data-testid="favorite-stocks-list-grid-remove-btn"
                                         type="button"
                                         className="ui-icon-button remove-btn"
                                         onClick={() => removeStockHandler(symbol)}
