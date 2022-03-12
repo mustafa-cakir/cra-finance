@@ -5,7 +5,7 @@ import FetchIEX from './index';
 import { IEX_BASE_DOMAIN } from '../constants/apis';
 
 const testApi = '/stock/AAPL/quote';
-const mockData = {
+const mockQuote = {
     companyName: 'Apple Inc',
     // some other data
 };
@@ -13,7 +13,7 @@ const mockData = {
 const server = setupServer(
     rest.get(`${IEX_BASE_DOMAIN}${testApi}`, (req, res, ctx) =>
         // return mock data
-        res(ctx.json(mockData)),
+        res(ctx.json(mockQuote)),
     ),
 );
 
@@ -24,7 +24,7 @@ afterAll(() => server.close());
 describe('FetchIEX Common API Method', () => {
     it('should make fetch request', async () => {
         const data = await FetchIEX(testApi);
-        expect(data.companyName).toBe(mockData.companyName);
+        expect(data?.companyName).toBe(mockQuote?.companyName);
     });
     it('should return error properly', async () => {
         // error message that presumed to be returned from server
@@ -45,7 +45,7 @@ describe('FetchIEX Common API Method', () => {
         try {
             await FetchIEX(testApi);
         } catch (err) {
-            error = JSON.parse((err as Error).message) as string;
+            error = JSON.parse((err as Error)?.message) as string;
         }
 
         expect(error).toBe(mockErrorMessage);

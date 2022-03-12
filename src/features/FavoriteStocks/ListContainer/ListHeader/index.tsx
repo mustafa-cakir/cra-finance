@@ -13,10 +13,11 @@ const FavoriteStocksListHeader = () => {
         dispatch(setListingType(type));
     };
     return (
-        <div className="favorite-stocks-list-header">
+        <div className="favorite-stocks-list-header" data-testid="favorite-stocks-list-header">
             <h3>My Favorites</h3>
             <div className="sort-icon">
                 <button
+                    data-testid="list-type-table-btn"
                     type="button"
                     onClick={() => changeListingType('table')}
                     className={`ui-icon-button ${listingType === 'table' ? 'active' : ''}`}
@@ -25,6 +26,7 @@ const FavoriteStocksListHeader = () => {
                 </button>
                 <div className="separator" />
                 <button
+                    data-testid="list-type-grid-btn"
                     type="button"
                     onClick={() => changeListingType('grid')}
                     className={`ui-icon-button ${listingType === 'grid' ? 'active' : ''}`}

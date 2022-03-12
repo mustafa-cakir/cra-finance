@@ -16,7 +16,7 @@ const FavoriteStocksList = () => {
     return (
         <>
             {error && (
-                <div className="ui-mb-15">
+                <div className="ui-mb-15" data-testid="favorite-stocks-list-error">
                     <Alert type="error" message={error} />
                 </div>
             )}

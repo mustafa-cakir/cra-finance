@@ -13,9 +13,9 @@ const FavoriteStocksSearch = () => {
 
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value = '' } = event?.target || {};
-        setKeyword(value);
+        setKeyword?.(value);
         // wait until user enters at least 2 letters before opening the dropdonw and start fetching
-        setIsDropdown(value.length > 1);
+        setIsDropdown?.(value.length > 1);
     };
 
     const onFocusHandler = () => {
@@ -33,10 +33,11 @@ const FavoriteStocksSearch = () => {
     };
 
     return (
-        <div className="favorite-stock-search" ref={el}>
+        <div className="favorite-stock-search" ref={el} data-testid="favorite-stock-search">
             <div className="ui-input-wrapper has-icon">
                 <Icons name="search" />
                 <input
+                    data-testid="favorite-stock-search-input"
                     ref={elInput}
                     type="text"
                     placeholder="Search stock to add favorites"
@@ -47,7 +48,7 @@ const FavoriteStocksSearch = () => {
             </div>
 
             <WithAnimaation isShow={isDropdown}>
-                <div className="favorite-stock-search-dropdown">
+                <div className="favorite-stock-search-dropdown" data-testid="favorite-stock-search-dropdown-container">
                     <FavoriteStocksSearchDropdown keyword={keyword} addStockToFavCallback={addStockToFavCallback} />
                 </div>
             </WithAnimaation>

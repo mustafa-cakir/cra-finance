@@ -44,7 +44,7 @@ const CompanyDetails = ({ symbol }: Prop) => {
             )}
             {company && (
                 <>
-                    <h2>
+                    <h2 data-testid="company-title">
                         {company.companyName} - {company.symbol}
                     </h2>
                     <p>{company.description}</p>
@@ -73,7 +73,11 @@ const CompanyDetails = ({ symbol }: Prop) => {
                     </div>
                 </>
             )}
-            {!error && !isLoading && !company && <div className="ui-text-muted">Company details are not found.</div>}
+            {!error && !isLoading && !company && (
+                <div className="ui-text-muted" data-testid="empty-state">
+                    Company details are not found.
+                </div>
+            )}
         </div>
     );
 };

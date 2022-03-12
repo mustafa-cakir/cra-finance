@@ -5,7 +5,7 @@ import './Style.scss';
 
 const ShimmerLoading = () => {
     return (
-        <div className="dropdown-shimmer">
+        <div className="dropdown-shimmer" data-testid="dropdown-shimmer">
             <ShimmerContainer>
                 <div className="dropdown-shimmer-inner">
                     <ShimmerItem height={26} width={50} />

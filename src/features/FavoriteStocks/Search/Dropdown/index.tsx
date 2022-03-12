@@ -33,7 +33,7 @@ const FavoriteStocksSearchDropdown = ({ keyword, addStockToFavCallback }: Props)
 
     if (error) {
         return (
-            <div className="error-contaıner">
+            <div className="error-contaıner" data-testid="dropdown-error">
                 <Alert type="error" message={error} />
             </div>
         );
@@ -43,10 +43,19 @@ const FavoriteStocksSearchDropdown = ({ keyword, addStockToFavCallback }: Props)
 
     if (quote?.symbol) {
         return (
-            <button type="button" className="company-btn" onClick={() => addStockToFavHandler(quote)}>
-                <div className="symbol">{quote.symbol}</div>
+            <button
+                type="button"
+                className="company-btn"
+                onClick={() => addStockToFavHandler(quote)}
+                data-testid="dropdown-company-btn"
+            >
+                <div className="symbol" data-testid="dropdown-company-symbol">
+                    {quote.symbol}
+                </div>
                 {quote.companyName && <div className="separator" />}
-                <div className="ui-text-muted company">{quote.companyName}</div>
+                <div className="ui-text-muted company" data-testid="dropdown-company-name">
+                    {quote.companyName}
+                </div>
                 <div className="fav-icon">
                     <Icons name={favStocks.indexOf(quote.symbol) > -1 ? 'check-circle' : 'plus-circle'} />
                 </div>
@@ -55,7 +64,7 @@ const FavoriteStocksSearchDropdown = ({ keyword, addStockToFavCallback }: Props)
     }
 
     return (
-        <div className="alert-contaıner">
+        <div className="alert-contaıner" data-testid="dropdown-nothing-found">
             <Alert type="info" message="No result found." />
         </div>
     );

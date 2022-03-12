@@ -29,7 +29,7 @@ const GridLayout = () => {
     };
 
     return (
-        <div className="favorite-stocks-list-grid">
+        <div className="favorite-stocks-list-grid" data-testid="favorite-stocks-list-grid">
             {openCompanyDetailBySymbol && (
                 <Modal closeHandler={closeCompanyDetailModalHandler}>
                     <CompanyDetails symbol={openCompanyDetailBySymbol} />

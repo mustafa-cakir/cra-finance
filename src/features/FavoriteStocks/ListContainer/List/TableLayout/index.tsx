@@ -29,7 +29,7 @@ const TableLayout = () => {
     };
 
     return (
-        <div className="favorite-stocks-list-table">
+        <div className="favorite-stocks-list-table" data-testid="favorite-stocks-list-table">
             {openCompanyDetailBySymbol && (
                 <Modal closeHandler={closeCompanyDetailModalHandler}>
                     <CompanyDetails symbol={openCompanyDetailBySymbol} />

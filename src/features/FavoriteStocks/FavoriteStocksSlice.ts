@@ -20,7 +20,7 @@ const removeItemFromQuotesHandler = (quotes: IQuote[], symbol: string) => {
     return quotes.filter(x => x.symbol !== symbol);
 };
 
-export const favoriteStocksSlice = createSlice({
+const favoriteStocksSlice = createSlice({
     name: 'counter',
     initialState,
     // The `reducers` field lets us define reducers and generate associated actions

@@ -4,7 +4,7 @@ import FavoriteStocksListHeader from './ListHeader';
 
 const ListContainer = () => {
     return (
-        <div className="favorite-stock-list-container">
+        <div className="favorite-stock-list-container" data-testid="favorite-stock-list-container">
             <FavoriteStocksListHeader />
             <FavoriteStocksList />
         </div>
